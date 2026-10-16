@@ -1,0 +1,5 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "mkdir -p dist && cp -r index.html assets dist/ && rm -f dist/assets/img/hur-senator.png",
+  "outputDirectory": "dist"
+}

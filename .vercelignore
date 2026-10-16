@@ -1,0 +1,10 @@
+# Vercel'e yüklenmeyecek geliştirici dosyaları
+# (site dosyaları: index.html + assets/ → build komutu bunları dist'e kopyalar)
+scripts/
+baslat.bat
+README.md
+.gitignore
+.env
+dist/
+deploy-hazir.zip
+assets/img/hur-senator.png

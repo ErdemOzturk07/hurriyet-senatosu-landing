@@ -3,7 +3,7 @@
 Tek sayfalık, bağımlılıksız statik landing. Tema: sarı-siyah-beyaz, dolmakalem (logo) motifi.
 Hero: solda hook, sağda VSL. Mobil öncelikli, erişilebilir, üçüncü taraf script yok.
 
-🔗 Canlı (test yayını): https://erdemozturk07.github.io/hurriyet-senatosu-landing/
+🔗 Canlı (test yayını): https://hursenato.vercel.app
 
 ## Çalıştırma
 
@@ -49,12 +49,16 @@ scripts/setup-assets.ps1        — asset üretimi (font indirme, poster kare al
 
 ## Yayınlama (hosting)
 
-**Canlı (test yayını):** https://erdemozturk07.github.io/hurriyet-senatosu-landing/
-**Repo:** github.com/ErdemOzturk07/hurriyet-senatosu-landing (public — ücretsiz GitHub'da
-Pages yalnızca public repolarda çalışır; `README.md`, `scripts/` gibi iç dosyalar da görünür)
+**Canlı (test yayını):** **https://hursenato.vercel.app**
+**Repo:** github.com/ErdemOzturk07/hurriyet-senatosu-landing (public)
+**Yedek yayın (GitHub Pages):** https://erdemozturk07.github.io/hurriyet-senatosu-landing/
 
-Yayın **GitHub Pages** ile `main` dalından yapılır (kaynak: branch `main`, klasör `/`).
-`.nojekyll` dosyası Jekyll işlemeyi kapatır; her push ~1 dakikada yayına girer.
+Birincil yayın **Vercel**'de (ücretsiz Hobby planı; proje adı `hursenato`). Yayına giren
+içerik `vercel.json`'daki build komutuyla seçilir: yalnızca `index.html` + `assets/`
+kopyalanır — `scripts/`, `baslat.bat`, `README.md`, `.env` yayına **gitmez** (404).
+
+- Elle yeniden yayınlama: `npx vercel deploy --prod` (kimlik: `.env` içindeki `VERCEL_TOKEN`;
+  CLI'nın oluşturduğu `.env.local` ve `.vercel/` klasörü gitignore'dadır)
 
 ### Güncelleme akışı (VS Code ile)
 
@@ -79,13 +83,15 @@ git add -A; git commit -m "metin güncellemesi"; git push
 
 Not: Push edilmedikçe canlı site etkilenmez; istediğin kadar yerelde deneme yapabilirsin.
 
-**Kapatmak için:** repo → Settings → Pages → Unpublish (veya repo'yu tekrar private yap;
-ücretsiz hesapta private repo'dan Pages yayını çalışmaz, site offline olur).
+**Yedek yayını kapatmak için (GitHub Pages):** repo → Settings → Pages → Unpublish.
+Vercel yayınını kapatmak için: vercel.com → proje → Settings → Delete Project.
 
-### İleride: istenirse taşıma (keşfedilmemiş URL + özel alan adı + giriş koruması)
+### İleride: kendi alan adı / korumalı erişim
 
-Resmileşmeye başlayınca **Cloudflare Pages**'e taşınabilir (ücretsiz plan, private repo
-destekler). Repo/kod aynı kalır; tek eksik Cloudflare ayarları:
+Resmileşmeye başlayınca önce Vercel panosinden **kendi alan adı** bağlanabilir
+(Project → Settings → Domains; ör. `tanitim.hursenato.com`). Alternatif olarak
+**Cloudflare Pages**'e taşınabilir (ücretsiz plan, private repo destekler; yukarıdaki
+build ayarlarının aynısı kullanılır). Repo/kod aynı kalır; Cloudflare ayarları:
 
 - Framework preset: **None**
 - Build command: `mkdir -p dist && cp -r index.html assets dist/ && rm -f dist/assets/img/hur-senator.png`
@@ -93,10 +99,9 @@ destekler). Repo/kod aynı kalır; tek eksik Cloudflare ayarları:
 - Build output directory: `dist`
 - Production branch: `main`
 
-Avantajları: link tahmin edilemez (`<proje>.pages.dev`), kendi alan adı (ör.
-`tanitim.hursenato.com`) ücretsiz bağlanır, ileride **Cloudflare Access** (ücretsiz,
-50 kişiye kadar) ile e-posta girişli koruma açılabilir. Netlify/Vercel'e göre bant
-genişliği sınırsız ve ticari kullanım kısıtı yok.
+Avantajları: kendi alan adı (ör. `tanitim.hursenato.com`) ücretsiz bağlanır, ileride
+**Cloudflare Access** (ücretsiz, 50 kişiye kadar) ile e-posta girişli koruma açılabilir;
+bant genişliği sınırsız ve ticari kullanım kısıtı yok.
 
 `scripts/setup-assets.ps1` yeniden çalıştırılabilir; fontları ve görselleri yeniden üretir.
 Font indirme başarısız olursa sistem font zincirine düşer (sayfa çalışmaya devam eder).

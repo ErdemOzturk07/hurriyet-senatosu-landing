@@ -9,5 +9,12 @@ Desktop.ini
 .vscode/
 .idea/
 
-# Vercel (kullanılmıyor; ileride gerekirse)
+# Yerel gizli değerler (Vercel token vb.)
+.env
+.env.local
+
+# Vercel yerel bağlantı klasörü
 .vercel/
+
+.vercel
+.env*
