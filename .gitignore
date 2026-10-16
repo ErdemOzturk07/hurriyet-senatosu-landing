@@ -1,0 +1,12 @@
+# Geçici / yerel dosyalar
+*.zip
+deploy-hazir.zip
+Thumbs.db
+Desktop.ini
+
+# Editör
+.vscode/
+.idea/
+
+# Vercel (kullanılmıyor; ileride gerekirse)
+.vercel/
