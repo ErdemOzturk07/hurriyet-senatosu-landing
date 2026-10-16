@@ -149,7 +149,13 @@ section[id]{scroll-margin-top:92px}
 .hero-card{background:var(--dark);color:var(--dark-ink);border-radius:var(--radius);padding:1.5rem;border:2px solid var(--ink);box-shadow:7px 7px 0 rgba(0,0,0,.45)}
 .hero-card h2{color:var(--paper);font-size:1.3rem;font-family:var(--display)}
 .hero-welcome{margin-top:2.2rem}
-@media(min-width:900px){.hero-welcome-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}.hero-welcome-cols p{margin:0}}
+/* Hoş geldin kartı: üç metin — dar ekranda yatay, geniş ekranda dikey kesikli ayraçla ayrılır */
+.hero-welcome-cols p + p{border-top:2px dashed rgba(255,216,0,.45);padding-top:.95rem;margin-top:.95rem}
+@media(min-width:900px){
+  .hero-welcome-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .hero-welcome-cols p{margin:0}
+  .hero-welcome-cols p + p{border-top:0;margin-top:0;padding-top:0;border-left:2px dashed rgba(255,216,0,.45);padding-left:1.2rem}
+}
 
 /* ---------- Bölümler: sarı / beyaz / siyah bantlar ---------- */
 .section{padding:3rem 0;background:var(--paper)}
