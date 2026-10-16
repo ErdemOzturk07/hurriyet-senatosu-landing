@@ -3,7 +3,7 @@ const CONFIG = {
   APPLY_URL: "https://hursenato.com/", // platform başvuru adresi (?ref= bu adrese eklenir)
   LOGIN_URL: "https://hursenato.com/", // platform giriş ekranı
   STORE_URL: "{{STORE_URL}}",
-  VSL_URL: "assets/video/vsl.mp4?v=6", // yerel mp4 (dosya yolu) veya YouTube linki
+  VSL_URL: "assets/video/vsl.mp4?v=7", // yerel mp4 (dosya yolu) veya YouTube linki
   REF_PARAM: "ref", // platform farklı parametre adı kullanıyorsa burayı değiştir
 };
 

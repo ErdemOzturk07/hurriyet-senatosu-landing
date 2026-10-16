@@ -27,8 +27,8 @@ python scripts/serve.py 8000        # --open eklersen tarayıcıyı da açar
 `scripts/serve.py` her yanıta `Cache-Control: no-store` ekler: VS Code'da CSS/JS'i
 kaydedip tarayıcıda **F5** yaptığında değişiklik anında görünür. Klasik
 `python -m http.server 8000` kullanırsan tarayıcı eski CSS'i önbellekten servis edebilir;
-o durumda **Ctrl+F5** (sert yenileme) yap. CSS/JS bağlantılarındaki `?v=5` eki de
-bir kerelik önbellek kırıcıdır — büyük bir değişiklikte bir artır (`?v=6`).
+o durumda **Ctrl+F5** (sert yenileme) yap. CSS/JS bağlantılarındaki `?v=7` eki de
+bir kerelik önbellek kırıcıdır — büyük bir değişiklikte bir artır (`?v=8`).
 
 ## Yapı
 
@@ -174,7 +174,7 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
 - **Tanıtım filmini (VSL) değiştirmek:** yeni videoyu `assets/video/vsl.mp4` adıyla kaydet
   (H.264/AAC, 9:16, ~30 MB altı, `-movflags +faststart`) → yeni videodan bir kare alıp
   `assets/img/vsl-poster.jpg` posterini üret → `index.html` ve `CONFIG.VSL_URL`'deki `?v`
-  ekini bir artır (şu an `?v=6`).
+  ekini bir artır (şu an `?v=7`).
 - **"Nasıl işliyor?" kartları:** 1. karttaki giriş ekranı görseli
   `assets/img/login-ekrani.png` (değiştirirsen aynı dosya adını kullan; görselin
   `<img ... width height>` değerlerini de yeni boyuta göre güncelle).
