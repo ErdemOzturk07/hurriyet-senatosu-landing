@@ -496,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".hero-grid > div, .hero-card, .section h2, .section-sub, .lede, .lede-light, " +
     ".hero-pledge, .steps li, .cards article, .feature-grid li, .trust-list li, .timeline div, " +
     ".hero-media, .hero-welcome, .vsl-frame, .manifesto p, #sss details, .final-cta .cta-row, " +
-    ".filters, .sig-grid, .card-tag, .milestones li, .neq-grid li, " +
+    ".filters, .agenda-chips, .sig-grid, .card-tag, .milestones li, .neq-grid li, " +
     ".chain li, .glossary div, .sub-h, .manifesto-note"
   );
   if ("IntersectionObserver" in window && !reduced) {

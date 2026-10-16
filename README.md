@@ -189,8 +189,9 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
 ## Metinleri nerede değiştirirsin?
 
 - **Tüm sayfa metinleri:** `index.html` — bölümler `id` ile ayrılmıştır:
-  `#ust` (hero) · `#sorun` (şerit) · `#nasil` · `#cozumler` (kartlar) · `#nedir` ·
-  `#hurriyetler` · `#kokenler` · `#model` · `#netlik` (sözlük) · `#guven` · `#sss` ·
+  `#ust` (hero) · `#sorun` (şerit) · `#parasistemi` (teşhis) · `#nasil` · `#cozumler` (kartlar) ·
+  `#nedir` · `#hurriyetler` · `#kokenler` · `#model` · `#taban` (örnekler + örgütlenme) ·
+  `#anlatim` (içerik türleri) · `#netlik` (sözlük) · `#guven` · `#sss` ·
   manifesto + `#son` (final). Türkçe yazımda `&rsquo;` (') ve `&mdash;` (—) kullanılır.
 - **Bağlantılar ve video:** `assets/js/main.js` → en üstteki `CONFIG`
   (`APPLY_URL`, `LOGIN_URL`, `STORE_URL`, `VSL_URL`, `REF_PARAM`).
@@ -254,6 +255,12 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
       tıklamadan indirilmez; özel kontrol şeridi çalışır (oynat/duraklat, sarma, süre); tamponda spinner
 - [x] Şerit düz + kenardan kenara + kesintisiz döngü; hızlı kaydırmada boş bölüm kalmaz
 - [x] Çözüm kartlarında kategori etiketi satır içinde alta hizalı (`margin-top:auto`)
+- [x] Podcast içeriği işlendi: `#parasistemi` (teşhis + gündem başlıkları), `#taban` (örnekler +
+      5 adımlı örgütlenme modeli), `#anlatim` (animasyon/video/kitap); çözümlere "Para Arzı:
+      Tam Rezerv Bankacılığı" kartı, SSS'e parti bağımsızlığı / %90 ekonomi / "modeller kesin
+      politika değil" soruları, sözlüğe kaydi para + tam rezerv + anayasal iktisat eklendi
+- [x] Yeni bölümlerde doğrulanmamış sayısal iddia yok; modeller "tartışmaya açık öneri" olarak
+      çerçeveli (kesinleşmiş program gibi sunulmuyor)
 - [x] "Nasıl işliyor?" üç kartı aynı yükseklikte: 1. kart gerçek giriş ekranı görseli
       (mini tarayıcı çerçevesi), 3. kart paylaşım kutucukları + örnek davet + referans çipi +
       hedef göstergesi; kartların altındaki boşluk kalmadı (552 px — 2 px tolerans)
@@ -270,14 +277,17 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 
 1. `#ust` hero — hook + dikey (9:16) VSL oynatıcı (VSL dikeyde ortalanır)
 2. `#sorun` — sorun şeridi (düz, kenardan kenara, kesintisiz döngü)
-3. `#nasil` — Nasıl işliyor? (3 adım + zaman çizelgesi) — beyaz bant
-4. `#cozumler` — Çözüm modelleri (filtreli kartlar) — sarı bant
-5. `#nedir` — Hürriyet Senatosu nedir? — siyah bant
-6. `#hurriyetler` — Üç hürriyet
-7. `#kokenler` — Kökenler · Hürriyet Ağacı (6 adım + Türkiye çizgisi) — siyah bant
-8. `#model` — Model · Öncü grup (9 → 16 → 5.000 → 80.000)
-9. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
-10. `#guven` — Görünür olmak zorunda değilsin
-11. `#sss` — SSS — beyaz bant
-12. `manifesto` + `#son` final CTA — siyah
-13. Kaldırıldı: `#katki` (bütçe katkısı bölümü)
+3. `#parasistemi` — Teşhis · Para sistemi (4 tez + gündem başlıkları) — siyah bant
+4. `#nasil` — Nasıl işliyor? (3 adım + zaman çizelgesi) — beyaz bant
+5. `#cozumler` — Çözüm modelleri (filtreli kartlar) — sarı bant
+6. `#nedir` — Hürriyet Senatosu nedir? — siyah bant
+7. `#hurriyetler` — Üç hürriyet
+8. `#kokenler` — Kökenler · Hürriyet Ağacı (6 adım + Türkiye çizgisi) — siyah bant
+9. `#model` — Model · Öncü grup (9 → 16 → 5.000 → 80.000)
+10. `#taban` — Taban hareketleri + örgütlenme modeli — siyah bant
+11. `#anlatim` — Farkındalık · Anlatım (animasyon/video/kitap) — sarı bant
+12. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
+13. `#guven` — Görünür olmak zorunda değilsin
+14. `#sss` — SSS — beyaz bant
+15. `manifesto` + `#son` final CTA — siyah
+16. Kaldırıldı: `#katki` (bütçe katkısı bölümü)
