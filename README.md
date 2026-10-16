@@ -264,7 +264,8 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 - [x] Sayfa ortası slogan bandı (`#slogan`, beyaz): manifesto ailesi stili, `para sisteminin
       kuralları` ifadesinde sarı fosforlu vurgu (highlighter)
 - [x] Gettysburg kartı (`li.wide.spot`) yatay: görsel solda (%38), yıl+başlık+açıklama sağda;
-      mobilde de yan yana kalır, görsel kart yüksekliğini doldurur (object-fit:cover)
+      mobilde de yan yana kalır, görsel kart yüksekliğini doldurur (object-fit:cover);
+      kart min-height 222px — görsel masaüstünde ~50px daha büyük görünür
 - [x] "Nasıl işliyor?" üç kartı aynı yükseklikte: 1. kart gerçek giriş ekranı görseli
       (mini tarayıcı çerçevesi), 3. kart paylaşım kutucukları + örnek davet + referans çipi +
       hedef göstergesi; kartların altındaki boşluk kalmadı (552 px — 2 px tolerans)

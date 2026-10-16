@@ -168,7 +168,7 @@ section[id]{scroll-margin-top:92px}
 .section-dark .section-sub{color:var(--dark-muted)}
 .feature-grid{list-style:none;margin:1.5rem 0;padding:0;display:grid;gap:.9rem}
 @media(min-width:700px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
-.feature-grid li{background:#fff;border:2px solid var(--ink);border-radius:var(--radius);padding:1rem 1.1rem;box-shadow:4px 4px 0 rgba(17,17,17,.85)}
+.feature-grid li{background:#fff;border:2px solid var(--ink);border-radius:var(--radius);padding:1rem 1.1rem;box-shadow:4px 4px 0 rgba(17,17,17,.85);overflow:hidden}
 .section-dark .feature-grid li{background:var(--dark-2);border-color:var(--paper);color:var(--dark-ink);box-shadow:4px 4px 0 rgba(255,216,0,.4)}
 .feature-grid strong{display:block;font-size:1.1rem;margin-bottom:.3rem;font-weight:800;font-family:var(--display)}
 .feature-grid span{color:var(--ink-soft);font-size:.95rem}
@@ -205,7 +205,7 @@ section[id]{scroll-margin-top:92px}
 
 /* Gettysburg: geniş kart yatay kalır; görsel solda, metin sağda */
 .milestones li.wide{grid-column:1/-1}
-.milestones li.spot{display:grid;grid-template-columns:38% 1fr;padding:0}
+.milestones li.spot{display:grid;grid-template-columns:38% 1fr;padding:0;min-height:222px}
 .milestones li.spot .ms-shot{margin:0;border-bottom:0;border-right:2px solid var(--paper)}
 .milestones li.spot .ms-shot img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center 42%}
 .milestones li.spot .ms-body{align-self:center;padding:1.1rem 3.2rem 1.1rem 1.2rem}
