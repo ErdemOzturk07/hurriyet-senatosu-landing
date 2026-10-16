@@ -3,6 +3,7 @@
 scripts/
 baslat.bat
 README.md
+GORSEL-PLANI.md
 .gitignore
 .env
 dist/
