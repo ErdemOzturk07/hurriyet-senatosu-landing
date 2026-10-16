@@ -123,7 +123,10 @@ Bölümler ve karşılıkları:
   (Jefferson, Gettysburg konuşması). Ardından "Aynı çizgi Türkiye'de":
   II. Meşrutiyet ve Özal dönemi.
 - `#model` **Öncü grup** — Sadık Dokuzlar örneğinden hareketin kendi ölçeğine köprü:
-  9 (1765) → 16 imzacı (bugün) → 5.000 (2027 sonu). Sayılar sayaçla canlanır.
+  9 (1765) → 16 imzacı (bugün) → 5.000 üye → 80.000 imzacı (2027 sonu). Sayılar sayaçla canlanır.
+- **Kanonik sayı modeli:** her senatör kendisi dahil 16 imzacı getirir (sen + 15 kişi);
+  hedef 5.000 üye; üye dahil toplam imzacı ağı 80.000 (16 × 5.000); süre 2027 sonu, söz 2028 başı.
+  Bu sayılar hero, adım 2, zaman çizelgesi, `#model`, SSS ve sayaçlarda birebir aynıdır.
 - `#netlik` **Kavram netliği** — hedonizm/sol liberalizm/anarşizm ayrımı ve
   "zenginlerin daha da zengin olması değildir" maddesi; ayrıca 6 maddelik "Küçük sözlük".
 - SSS'te Hürriyet Ağacı, libertaryenizm karışıklığı, küçük grupla başlama ve fikrî
@@ -229,7 +232,7 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 
 - [x] 360px taşma yok (grid + wrap; yatay kaydırma çıkarmaz)
 - [x] "Senatör Ol" CTA'sı hero + adımlar + final + sticky; `?ref=` linke taşınıyor, cookie/localStorage'a yazılmıyor
-- [x] 16 / 5.000 / 2027 sonu / 2028 başı tutarlı
+- [x] 16 (senatör başına) / 5.000 üye / 80.000 imzacı (üye dahil) / 2027 sonu / 2028 başı tutarlı
 - [x] Gizlilik dili: "ad-soyad admin dışında görünmez, hassas bilgi istenmez" — anonimlik iddiası yok
 - [x] Çözüm kartlarında kaynak dışı teknik detay yok; çözümler "hareketin iddiası" olarak çerçeveli
 - [x] Üçüncü taraf script/takip yok; fontlar self-hosted
@@ -264,7 +267,7 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 5. `#nedir` — Hürriyet Senatosu nedir? — siyah bant
 6. `#hurriyetler` — Üç hürriyet
 7. `#kokenler` — Kökenler · Hürriyet Ağacı (6 adım + Türkiye çizgisi) — siyah bant
-8. `#model` — Model · Öncü grup (9 → 16 → 5.000)
+8. `#model` — Model · Öncü grup (9 → 16 → 5.000 → 80.000)
 9. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
 10. `#guven` — Görünür olmak zorunda değilsin
 11. `#sss` — SSS — beyaz bant

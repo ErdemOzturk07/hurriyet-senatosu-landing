@@ -85,7 +85,8 @@ section[id]{scroll-margin-top:92px}
 .hero-pledge strong{color:#fff;font-weight:900}
 .cta-row{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.5rem 0 .4rem}
 .hero-stats{display:flex;flex-wrap:wrap;gap:1rem;margin:1.6rem 0 0;padding:0}
-.hero-stats div{background:#fff;border:2px solid var(--ink);border-radius:var(--radius);padding:.75rem 1rem;flex:1 1 30%;min-width:140px;text-align:center;box-shadow:5px 5px 0 var(--ink)}
+.hero-stats div{background:#fff;border:2px solid var(--ink);border-radius:var(--radius);padding:.75rem 1rem;flex:1 1 calc(50% - .5rem);min-width:140px;text-align:center;box-shadow:5px 5px 0 var(--ink)}
+@media(min-width:1180px){.hero-stats div{flex-basis:calc(25% - .75rem)}}
 .hero-stats dt{font-size:.78rem;color:var(--ink-soft);font-weight:700}
 .hero-stats dd{margin:0;font-family:var(--display);font-weight:900;font-size:1.5rem;line-height:1.25}
 
@@ -198,13 +199,14 @@ section[id]{scroll-margin-top:92px}
 
 /* Model: öncü grup zinciri */
 .chain{list-style:none;margin:1.7rem 0 0;padding:0;display:grid;gap:1.7rem}
-@media(min-width:820px){.chain{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+@media(min-width:820px){.chain{grid-template-columns:repeat(4,1fr);gap:1.5rem}}
 .chain li{position:relative;background:#fff;border:2px solid var(--ink);border-radius:var(--radius);padding:1.2rem 1.1rem;text-align:center;box-shadow:5px 5px 0 var(--ink);transition:transform .25s ease,box-shadow .25s ease}
 .chain li:hover{transform:translateY(-4px);box-shadow:8px 8px 0 var(--ink)}
 .chain-no{display:block;font-family:var(--display);font-weight:900;font-size:2.5rem;line-height:1;letter-spacing:-.03em}
 .chain li strong{display:block;font-family:var(--display);font-size:1.06rem;margin:.45rem 0 .15rem}
 .chain li>span:last-child{color:var(--ink-soft);font-size:.92rem}
 .chain li::after{content:"";position:absolute;width:.7rem;height:.7rem;border-top:4px solid var(--ink);border-right:4px solid var(--ink)}
+.chain li:last-child::after{display:none}
 @media(min-width:820px){.chain li:not(:last-child)::after{right:-1.35rem;top:50%;transform:translateY(-50%) rotate(45deg)}}
 @media(max-width:819px){.chain li:not(:last-child)::after{left:50%;bottom:-1.3rem;transform:translateX(-50%) rotate(135deg)}}
 
