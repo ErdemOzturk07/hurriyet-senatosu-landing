@@ -190,9 +190,9 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
 
 - **Tüm sayfa metinleri:** `index.html` — bölümler `id` ile ayrılmıştır:
   `#ust` (hero) · `#sorun` (şerit) · `#parasistemi` (teşhis) · `#nasil` · `#cozumler` (kartlar) ·
-  `#nedir` · `#hurriyetler` · `#kokenler` · `#model` · `#taban` (örnekler + örgütlenme) ·
-  `#anlatim` (içerik türleri) · `#netlik` (sözlük) · `#guven` · `#sss` ·
-  manifesto + `#son` (final). Türkçe yazımda `&rsquo;` (') ve `&mdash;` (—) kullanılır.
+  `#nedir` · `#hurriyetler` · `#kokenler` · `#slogan` (orta söz bandı) · `#model` ·
+  `#taban` (örnekler + örgütlenme) · `#anlatim` (içerik türleri) · `#netlik` (sözlük) ·
+  `#guven` · `#sss` · manifesto + `#son` (final). Türkçe yazımda `&rsquo;` (') ve `&mdash;` (—) kullanılır.
 - **Bağlantılar ve video:** `assets/js/main.js` → en üstteki `CONFIG`
   (`APPLY_URL`, `LOGIN_URL`, `STORE_URL`, `VSL_URL`, `REF_PARAM`).
   `VSL_URL` yerel bir mp4 yolu (`assets/video/vsl.mp4`) ya da YouTube linki olabilir.
@@ -261,6 +261,8 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
       politika değil" soruları, sözlüğe kaydi para + tam rezerv + anayasal iktisat eklendi
 - [x] Yeni bölümlerde doğrulanmamış sayısal iddia yok; modeller "tartışmaya açık öneri" olarak
       çerçeveli (kesinleşmiş program gibi sunulmuyor)
+- [x] Sayfa ortası slogan bandı (`#slogan`, beyaz): manifesto ailesi stili, `para sisteminin
+      kuralları` ifadesinde sarı fosforlu vurgu (highlighter)
 - [x] "Nasıl işliyor?" üç kartı aynı yükseklikte: 1. kart gerçek giriş ekranı görseli
       (mini tarayıcı çerçevesi), 3. kart paylaşım kutucukları + örnek davet + referans çipi +
       hedef göstergesi; kartların altındaki boşluk kalmadı (552 px — 2 px tolerans)
@@ -283,11 +285,12 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 6. `#nedir` — Hürriyet Senatosu nedir? — siyah bant
 7. `#hurriyetler` — Üç hürriyet
 8. `#kokenler` — Kökenler · Hürriyet Ağacı (6 adım + Türkiye çizgisi) — siyah bant
-9. `#model` — Model · Öncü grup (9 → 16 → 5.000 → 80.000)
-10. `#taban` — Taban hareketleri + örgütlenme modeli — siyah bant
-11. `#anlatim` — Farkındalık · Anlatım (animasyon/video/kitap) — sarı bant
-12. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
-13. `#guven` — Görünür olmak zorunda değilsin
-14. `#sss` — SSS — beyaz bant
-15. `manifesto` + `#son` final CTA — siyah
-16. Kaldırıldı: `#katki` (bütçe katkısı bölümü)
+9. `#slogan` — slogan bandı (söz + kısa açıklama, manifesto stili) — beyaz bant
+10. `#model` — Model · Öncü grup (9 → 16 → 5.000 → 80.000)
+11. `#taban` — Taban hareketleri + örgütlenme modeli — siyah bant
+12. `#anlatim` — Farkındalık · Anlatım (animasyon/video/kitap) — sarı bant
+13. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
+14. `#guven` — Görünür olmak zorunda değilsin
+15. `#sss` — SSS — beyaz bant
+16. `manifesto` + `#son` final CTA — siyah
+17. Kaldırıldı: `#katki` (bütçe katkısı bölümü)
