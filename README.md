@@ -3,6 +3,8 @@
 Tek sayfalık, bağımlılıksız statik landing. Tema: sarı-siyah-beyaz, dolmakalem (logo) motifi.
 Hero: solda hook, sağda VSL. Mobil öncelikli, erişilebilir, üçüncü taraf script yok.
 
+🔗 Canlı (test yayını): https://erdemozturk07.github.io/hurriyet-senatosu-landing/
+
 ## Çalıştırma
 
 Statik dosya — build gerekmez. Üç yol var:
@@ -46,24 +48,12 @@ scripts/setup-assets.ps1        — asset üretimi (font indirme, poster kare al
 
 ## Yayınlama (hosting)
 
-Proje **GitHub'da özel (private) bir repoda** durur; yayına **Cloudflare Pages** (ücretsiz)
-ile çıkar. Repo: `github.com/ErdemOzturk07/hurriyet-senatosu-landing`
+**Canlı (test yayını):** https://erdemozturk07.github.io/hurriyet-senatosu-landing/
+**Repo:** github.com/ErdemOzturk07/hurriyet-senatosu-landing (public — ücretsiz GitHub'da
+Pages yalnızca public repolarda çalışır; `README.md`, `scripts/` gibi iç dosyalar da görünür)
 
-### İlk kurulum (tek seferlik)
-
-1. https://dash.cloudflare.com → **Workers & Pages** → **Create** → **Pages** →
-   **Connect to Git** → GitHub'ı yetkilendir → repoyu seç.
-2. Ayarlar:
-   - **Framework preset:** None
-   - **Build command:**
-     ```
-     mkdir -p dist && cp -r index.html assets dist/ && rm -f dist/assets/img/hur-senator.png
-     ```
-     (Yalnızca site dosyalarını yayına alır; `scripts/`, `baslat.bat`, `README.md` yayına gitmez.
-     Build komutu çalışmazsa alternatif: komutu boş bırak, **Build output directory** = `/`.)
-   - **Build output directory:** `dist`
-   - **Production branch:** `main`
-3. **Save and Deploy** → birkaç saniyede `https://<proje>.pages.dev` linki hazır.
+Yayın **GitHub Pages** ile `main` dalından yapılır (kaynak: branch `main`, klasör `/`).
+`.nojekyll` dosyası Jekyll işlemeyi kapatır; her push ~1 dakikada yayına girer.
 
 ### Güncelleme akışı
 
@@ -74,13 +64,27 @@ git commit -m "metin güncellemesi"
 git push
 ```
 
-`main` dalına her push → otomatik yayın. Başka dal/branch'ler önizleme linki üretir.
-Özel alan adı (ör. `tanitim.hursenato.com`) sonradan Pages → **Custom domains**'ten
-ücretsiz bağlanır (HTTPS otomatik).
+VS Code → **Source Control** panelinden de commit + push yapabilirsin. Değişiklik hemen
+görünmezse sayfayı **Ctrl+F5** ile yenile.
 
-Not: Netlify/Vercel gibi alternatiflerle karşılaştırıldığında Cloudflare Pages'in
-avantajı: bant genişliği sınırsız, ticari kullanım kısıtı yok, ileride **Cloudflare
-Access** (ücretsiz, 50 kişiye kadar) ile girişle koruma açılabilir.
+**Kapatmak için:** repo → Settings → Pages → Unpublish (veya repo'yu tekrar private yap;
+ücretsiz hesapta private repo'dan Pages yayını çalışmaz, site offline olur).
+
+### İleride: istenirse taşıma (keşfedilmemiş URL + özel alan adı + giriş koruması)
+
+Resmileşmeye başlayınca **Cloudflare Pages**'e taşınabilir (ücretsiz plan, private repo
+destekler). Repo/kod aynı kalır; tek eksik Cloudflare ayarları:
+
+- Framework preset: **None**
+- Build command: `mkdir -p dist && cp -r index.html assets dist/ && rm -f dist/assets/img/hur-senator.png`
+  (yalnızca site dosyalarını yayına alır; `scripts/`, `baslat.bat`, `README.md` yayına gitmez)
+- Build output directory: `dist`
+- Production branch: `main`
+
+Avantajları: link tahmin edilemez (`<proje>.pages.dev`), kendi alan adı (ör.
+`tanitim.hursenato.com`) ücretsiz bağlanır, ileride **Cloudflare Access** (ücretsiz,
+50 kişiye kadar) ile e-posta girişli koruma açılabilir. Netlify/Vercel'e göre bant
+genişliği sınırsız ve ticari kullanım kısıtı yok.
 
 `scripts/setup-assets.ps1` yeniden çalıştırılabilir; fontları ve görselleri yeniden üretir.
 Font indirme başarısız olursa sistem font zincirine düşer (sayfa çalışmaya devam eder).
