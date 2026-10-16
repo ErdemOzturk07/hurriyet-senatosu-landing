@@ -179,6 +179,10 @@ section[id]{scroll-margin-top:92px}
 .section-dark .sub-h{color:var(--paper)}
 .sub-h + .section-sub{margin-top:.3rem}
 
+/* Dikey ritim: liste/kart bloğundan sonra gelen metin, blok öncesiyle aynı nefesi alır */
+.chain + p,.milestones + p,.neq-grid + p,.glossary + p,.trust-list + p,.cards + p,.timeline + p,.steps + p{margin-top:1.5rem}
+.section-sub + .section-sub{margin-top:.9rem}
+
 /* Kökenler: 1765 */
 .milestones{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.9rem;counter-reset:ms}
 @media(min-width:700px){.milestones{grid-template-columns:repeat(2,1fr)}}
