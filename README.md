@@ -55,17 +55,28 @@ Pages yalnızca public repolarda çalışır; `README.md`, `scripts/` gibi iç d
 Yayın **GitHub Pages** ile `main` dalından yapılır (kaynak: branch `main`, klasör `/`).
 `.nojekyll` dosyası Jekyll işlemeyi kapatır; her push ~1 dakikada yayına girer.
 
-### Güncelleme akışı
+### Güncelleme akışı (VS Code ile)
+
+Değişikliğin canlı sitede görünmesi için **commit + push** şart. Kaydetmek (Ctrl+S) yetmez.
+
+1. Dosyayı düzenle → **Ctrl+S** ile kaydet (sekmedeki nokta ● kaybolmalı).
+2. Sol kenardaki **Source Control** simgesi (Ctrl+Shift+G) → değiştirdiğin dosyalar
+   "Changes" altında listelenir.
+3. Üstteki mesaj kutusuna kısa bir not yaz (ör. "hero metni güncellendi").
+4. **✓ Commit** butonuna bas. "There are no staged changes…" diye sorarsa → **Yes**.
+5. Ardından beliren **Sync Changes** (bazı sürümlerde **Push**) butonuna bas.
+   (Mesaj kutusundayken **Ctrl+Enter** da commit eder.)
+6. ~1 dakika sonra site güncellenir → tarayıcıda **Ctrl+F5**.
+
+Yerel önizleme için: `baslat.bat` → http://localhost:8000 (push etmeden önce bakabilirsin).
+Terminal alternatifi:
 
 ```powershell
 cd C:\Users\Erdem\hurriyet-senatosu-landing
-git add -A
-git commit -m "metin güncellemesi"
-git push
+git add -A; git commit -m "metin güncellemesi"; git push
 ```
 
-VS Code → **Source Control** panelinden de commit + push yapabilirsin. Değişiklik hemen
-görünmezse sayfayı **Ctrl+F5** ile yenile.
+Not: Push edilmedikçe canlı site etkilenmez; istediğin kadar yerelde deneme yapabilirsin.
 
 **Kapatmak için:** repo → Settings → Pages → Unpublish (veya repo'yu tekrar private yap;
 ücretsiz hesapta private repo'dan Pages yayını çalışmaz, site offline olur).
