@@ -1,6 +1,7 @@
 # Geçici / yerel dosyalar
 *.zip
 deploy-hazir.zip
+dist/
 Thumbs.db
 Desktop.ini
 
