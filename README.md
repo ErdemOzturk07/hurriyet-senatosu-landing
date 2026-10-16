@@ -107,7 +107,7 @@ Bölümler ve karşılıkları:
 - `#netlik` **Kavram netliği** — hedonizm/sol liberalizm/anarşizm ayrımı ve
   "zenginlerin daha da zengin olması değildir" maddesi; ayrıca 6 maddelik "Küçük sözlük".
 - SSS'te Hürriyet Ağacı, libertaryenizm karışıklığı, küçük grupla başlama ve fikrî
-  çerçeve maddeleri var. Manifesto bandında "1765'te küçük bir grupla başladı" notu.
+  çerçeve maddeleri var. Manifesto bandında "hak eden kazanacak" notu.
 
 **Sembol/bayrak vurgusu kaldırıldı:** Rozet (hur-senator.png), ağaç amblemi, footer'daki
 "Sembolümüz" satırı ve Gadsden bayrağı karşılaştırmaları sayfadan çıkarıldı; "Hürriyet Ağacı"
