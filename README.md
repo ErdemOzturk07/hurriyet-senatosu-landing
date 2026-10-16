@@ -37,11 +37,12 @@ index.html                      — tek sayfa (semantik, lang="tr")
 assets/css/fonts.css            — self-hosted font tanımları (build çıktısı)
 assets/css/main.css             — tema + bileşenler (tek tema: marka sarısı)
 assets/js/main.js               — ref aktarımı, VSL, sayaç, filtre, reveal, scrollspy
+assets/video/vsl.mp4            — VSL tanıtım filmi (9:16, 720×1280, H.264/AAC, 39,6 MB, faststart)
 assets/fonts/*.woff2            — Montserrat + Inter (latin + latin-ext)
 assets/img/vsl-poster.jpg       — VSL videosunun 20. sn'sinden alınan 9:16 poster (720×1280)
 assets/img/hur-senator.png      — kullanılmıyor (sembol/rozet vurgusu kaldırıldı; dosya arşiv olarak duruyor)
 assets/img/login-ekrani.png     — platform giriş ekranı (721x570, "1. adım" kartındaki çerçeveli görsel)
-scripts/serve.py                — önbelleksiz yerel önizleme sunucusu
+scripts/serve.py                — önbelleksiz yerel önizleme sunucusu (+ HTTP Range: video sarma)
 baslat.bat                      — çift tıkla çalıştır (sunucu + tarayıcı)
 scripts/setup-assets.ps1        — asset üretimi (font indirme, poster kare alma)
 ```

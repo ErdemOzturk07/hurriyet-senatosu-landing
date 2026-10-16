@@ -6,7 +6,8 @@ $root     = 'C:\Users\Erdem\hurriyet-senatosu-landing'
 $fontsDir = Join-Path $root 'assets\fonts'
 $imgDir   = Join-Path $root 'assets\img'
 $cssDir   = Join-Path $root 'assets\css'
-New-Item -ItemType Directory -Force -Path $fontsDir, $imgDir, $cssDir | Out-Null
+$videoDir = Join-Path $root 'assets\video'
+New-Item -ItemType Directory -Force -Path $fontsDir, $imgDir, $cssDir, $videoDir | Out-Null
 
 # ---------------------------------------------------------------
 # 1) Self-hosted fonts: Montserrat (display) + Inter (body)
@@ -47,17 +48,15 @@ catch {
 }
 
 # ---------------------------------------------------------------
-# 2) VSL posteri (dikey 9:16): kaynak videonun ortasından kırpılan kare.
-#    Kaynak video varsa ffmpeg ile 36. saniyeden 608x1080 (9:16) kare alınır.
-#    Kaynak yoksa mevcut poster korunur (elle üretilmiş sürüm silinmez).
-#    Not: --vsl-crop ile oynatıcı 9:16'ya kırpılır; gerçek dikey video gelince
-#    poster de tam kare (ör. 1080x1920) olmalıdır.
+# 2) VSL posteri (dikey 9:16): projedeki videonun 20. saniyesinden tam kare.
+#    Kaynak: assets/video/vsl.mp4 (Finder'da yoksa mevcut poster korunur).
+#    Video zaten 9:16 olduğu için kırpma yok; poster 720x1280 üretilir.
 # ---------------------------------------------------------------
 $posterPath = Join-Path $imgDir 'vsl-poster.jpg'
-$srcVideo   = 'C:\Users\Erdem\Desktop\vsl.mp4'
+$srcVideo   = Join-Path $videoDir 'vsl.mp4'
 if ((Test-Path $srcVideo) -and (Get-Command ffmpeg -ErrorAction SilentlyContinue)) {
-  & ffmpeg -y -loglevel error -ss 00:00:36 -i $srcVideo -frames:v 1 -vf 'crop=608:1080:656:0' -q:v 4 $posterPath
-  Write-Output 'POSTER OK: videodan 9:16 kare (608x1080) üretildi'
+  & ffmpeg -y -loglevel error -ss 20 -i $srcVideo -frames:v 1 -vf 'scale=720:1280' -q:v 2 $posterPath
+  Write-Output 'POSTER OK: videodan 9:16 kare (720x1280) üretildi'
 } elseif (Test-Path $posterPath) {
   Write-Output 'POSTER SKIP: kaynak video yok; mevcut assets/img/vsl-poster.jpg korunuyor'
 } else {
