@@ -60,12 +60,15 @@ Birincil yayın **Vercel**'de (ücretsiz Hobby planı; proje adı `hursenato`). 
 içerik `vercel.json`'daki build komutuyla seçilir: yalnızca `index.html` + `assets/`
 kopyalanır — `scripts/`, `baslat.bat`, `README.md`, `.env` yayına **gitmez** (404).
 
-- Elle yeniden yayınlama: `npx vercel deploy --prod` (kimlik: `.env` içindeki `VERCEL_TOKEN`;
-  CLI'nın oluşturduğu `.env.local` ve `.vercel/` klasörü gitignore'dadır)
+- Elle yeniden yayınlama: `npx vercel deploy --prod` (kimlik: `.env` içindeki `VERCEL_TOKEN` —
+  tırnaklı yazılmış; hazır komut aşağıdaki 7. adımda. CLI'nın oluşturduğu `.env.local` ve
+  `.vercel/` klasörü gitignore'dadır)
 
 ### Güncelleme akışı (VS Code ile)
 
-Değişikliğin canlı sitede görünmesi için **commit + push** şart. Kaydetmek (Ctrl+S) yetmez.
+Önemli: Vercel projesi şu an git'e bağlı **değil**; commit + push **tek başına canlıyı
+güncellemez** — yalnızca GitHub Pages yedeğini günceller. Vercel için 7. adımdaki elle
+deploy şart. (Kalıcı çözüm: bir kez `npx vercel git connect`.)
 
 1. Dosyayı düzenle → **Ctrl+S** ile kaydet (sekmedeki nokta ● kaybolmalı).
 2. Sol kenardaki **Source Control** simgesi (Ctrl+Shift+G) → değiştirdiğin dosyalar
@@ -74,7 +77,13 @@ Değişikliğin canlı sitede görünmesi için **commit + push** şart. Kaydetm
 4. **✓ Commit** butonuna bas. "There are no staged changes…" diye sorarsa → **Yes**.
 5. Ardından beliren **Sync Changes** (bazı sürümlerde **Push**) butonuna bas.
    (Mesaj kutusundayken **Ctrl+Enter** da commit eder.)
-6. ~1 dakika sonra site güncellenir → tarayıcıda **Ctrl+F5**.
+6. ~1 dakika sonra **yedek yayın** (GitHub Pages) güncellenir.
+7. **Vercel'e yayınla** (terminal) → tarayıcıda **Ctrl+F5**:
+
+   ```powershell
+   $t = ((Get-Content .env | Where-Object { $_ -match '^VERCEL_TOKEN=' }) -replace '^VERCEL_TOKEN=','').Trim().Trim('"')
+   npx vercel deploy --prod --yes --token $t
+   ```
 
 Yerel önizleme için: `baslat.bat` → http://localhost:8000 (push etmeden önce bakabilirsin).
 Terminal alternatifi:
