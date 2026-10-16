@@ -10,6 +10,8 @@ Kurallar:
 
 ## A) Kökenler · 1765 — kilometre taşı kartları (hepsi PD, kredi yok)
 
+> **Durum: uygulandı ✓** (main.css v18) — 7 görsel `assets/img/tarih/` altında; kartlarda s/b durur, hover'da doğal renk. Gettysburg paragrafının yanında çerçeveli.
+
 | Kart | Önerilen görsel (Wikimedia Commons dosya sayfası) |
 |---|---|
 | Pul Vergisi (Stamp Act) | [Proof sheet of one penny stamps, 1765](https://commons.wikimedia.org/wiki/File:Proof_sheet_of_one_penny_stamps_Stamp_Act_1765.jpg) — British Library |
