@@ -3,7 +3,7 @@ const CONFIG = {
   APPLY_URL: "https://hursenato.com/", // platform başvuru adresi (?ref= bu adrese eklenir)
   LOGIN_URL: "https://hursenato.com/", // platform giriş ekranı
   STORE_URL: "{{STORE_URL}}",
-  VSL_URL: "https://www.youtube.com/watch?v=09BjlvndJxo", // YouTube linki, mp4 yolu veya mp4 adresi
+  VSL_URL: "assets/video/vsl.mp4?v=6", // yerel mp4 (dosya yolu) veya YouTube linki
   REF_PARAM: "ref", // platform farklı parametre adı kullanıyorsa burayı değiştir
 };
 
@@ -296,11 +296,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     } else {
-      // Doğrudan video dosyası (mp4 vb.)
-      source.src = CONFIG.VSL_URL;
-      video.load();
+      // Doğrudan video dosyası (mp4 vb.) — üçüncü taraf yok.
+      // Dosya, "oynat"a basılana kadar indirilmez (preload=none + tembel yükleme).
+      const capEl = document.getElementById("vslCaption");
+      const spin = document.getElementById("vslSpin");
+      const setCap = (txt) => { if (capEl) capEl.textContent = txt; };
+      const showSpin = (on) => { if (spin) spin.hidden = !on; };
+
+      const ensureSrc = () => {
+        if (!source.src && !video.getAttribute("src")) {
+          source.src = CONFIG.VSL_URL;
+          video.load();
+        }
+      };
+
       video.addEventListener("loadedmetadata", () => {
         if (video.duration && isFinite(video.duration)) { st.dur = video.duration; paint(); }
+        if (st.dur) setCap("Tanıtım videosu · " + mmss(st.dur));
       });
       video.addEventListener("timeupdate", () => {
         if (st.drag) return;
@@ -314,14 +326,33 @@ document.addEventListener("DOMContentLoaded", () => {
         frame.classList.add("is-playing");
         setToggle(true);
         showBar();
-        linkCaption();
+      });
+      video.addEventListener("playing", () => {
+        showSpin(false);
+        if (st.dur) setCap("Tanıtım videosu · " + mmss(st.dur));
+      });
+      video.addEventListener("waiting", () => {
+        if (!video.paused) { showSpin(true); setCap("Video yükleniyor…"); }
       });
       video.addEventListener("pause", () => setToggle(false));
-      video.addEventListener("ended", () => setToggle(false));
+      video.addEventListener("ended", () => { setToggle(false); showSpin(false); });
+      video.addEventListener("error", () => {
+        showSpin(false);
+        play.hidden = true;
+        soon.textContent = "Video şu an yüklenemedi. Bağlantını kontrol edip tekrar dene.";
+        soon.hidden = false;
+      });
+      // Oynarken videoya tıkla → duraklat / devam
+      video.addEventListener("click", () => {
+        if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }
+      });
       play.addEventListener("click", () => {
+        ensureSrc();
+        setCap("Video yükleniyor…");
         video.play().catch(() => {
+          showSpin(false);
           play.hidden = true;
-          soon.textContent = "Video oynatılamadı. Dosya yolunu kontrol et: CONFIG.VSL_URL";
+          soon.textContent = "Video şu an yüklenemedi. Bağlantını kontrol edip tekrar dene.";
           soon.hidden = false;
         });
       });

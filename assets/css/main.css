@@ -13,10 +13,9 @@
   --max:1120px; --narrow:760px;
   --display:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
-  /* VSL: dikey (short-form) çerçeve.
-     --vsl-crop: yatay 16:9 kaynağın yan bantlarını kırpmak için ölçek
-     (9:16 çerçevede 16:9 video => 316.05%). Video gerçekten dik gelince 100% yap. */
-  --vsl-w:320px; --vsl-ratio:9/16; --vsl-crop:316.05%;
+  /* VSL: dikey (short-form) çerçeve. Kaynak artık gerçek 9:16 video (assets/video/vsl.mp4),
+     bu yüzden kırpma yok (100%). Yatay 16:9 bir YouTube kaynağına dönersen 316.05% yap. */
+  --vsl-w:320px; --vsl-ratio:9/16; --vsl-crop:100%;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -111,6 +110,11 @@ section[id]{scroll-margin-top:92px}
 }
 .vsl-soon{position:absolute;left:.9rem;right:.9rem;bottom:.9rem;margin:0;background:rgba(0,0,0,.82);color:var(--paper);padding:.6rem 1rem;border-radius:.7rem;font-size:.9rem;text-align:center;font-weight:600;z-index:2}
 .vsl-soon[hidden]{display:none}
+.vsl-frame.is-playing video{cursor:pointer}
+.vsl-spin{position:absolute;inset:0;margin:auto;width:2.6rem;height:2.6rem;border-radius:50%;border:4px solid rgba(255,255,255,.25);border-top-color:var(--paper);animation:vslSpin .9s linear infinite;z-index:2;pointer-events:none}
+.vsl-spin[hidden]{display:none}
+@keyframes vslSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.vsl-spin{animation-duration:2.4s}}
 .hero-media-cap{font-size:.9rem;font-weight:600;color:var(--ink-soft);margin:.9rem 0 0}
 
 /* VSL kontrol şeridi (dikey oynatıcı) — YouTube kontrol çubuğu dikey çerçevede

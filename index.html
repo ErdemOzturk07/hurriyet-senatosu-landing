@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/montserrat-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css?v=5">
-<link rel="stylesheet" href="assets/css/main.css?v=5">
+<link rel="stylesheet" href="assets/css/main.css?v=6">
 <!-- {{ANALYTICS}} : gizlilik odaklı analitik gerekiyorsa bu satırın altına ekle. Varsayılan: üçüncü taraf script yok. -->
 </head>
 <body>
@@ -105,11 +105,12 @@
         <p class="eyebrow">Önce izle</p>
         <div class="vsl-wrap">
           <div class="vsl-frame" id="vslFrame">
-            <video id="vslVideo" preload="none" playsinline poster="assets/img/vsl-poster.jpg">
+            <video id="vslVideo" preload="none" playsinline poster="assets/img/vsl-poster.jpg?v=6">
               <source id="vslSource" type="video/mp4">
-              Tarayıcın videoyu oynatamıyor. <a id="vslFallback" href="https://www.youtube.com/watch?v=09BjlvndJxo">Videoyu ayrı aç</a>
+              Tarayıcın videoyu oynatamıyor. <a id="vslFallback" href="assets/video/vsl.mp4">Videoyu ayrı aç</a>
             </video>
             <button class="vsl-play" id="vslPlay" aria-label="Tanıtım filmini oynat"><span aria-hidden="true">▶</span></button>
+            <div class="vsl-spin" id="vslSpin" hidden aria-hidden="true"></div>
             <p class="vsl-soon" id="vslSoon" hidden role="status">Tanıtım filmi çok yakında burada olacak. Bu arada aşağıdan devam et.</p>
           </div>
         </div>
@@ -431,6 +432,6 @@
 <a class="sticky-cta" data-apply-link href="https://hursenato.com/">Senatör Ol &rarr;</a>
 <button class="to-top" id="toTop" aria-label="Başa dön">↑</button>
 
-<script src="assets/js/main.js?v=5" defer></script>
+<script src="assets/js/main.js?v=6" defer></script>
 </body>
 </html>

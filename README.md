@@ -38,7 +38,7 @@ assets/css/fonts.css            — self-hosted font tanımları (build çıktı
 assets/css/main.css             — tema + bileşenler (tek tema: marka sarısı)
 assets/js/main.js               — ref aktarımı, VSL, sayaç, filtre, reveal, scrollspy
 assets/fonts/*.woff2            — Montserrat + Inter (latin + latin-ext)
-assets/img/vsl-poster.jpg       — VSL videosunun 36. sn'sinden alınan 9:16 poster (608x1080)
+assets/img/vsl-poster.jpg       — VSL videosunun 20. sn'sinden alınan 9:16 poster (720×1280)
 assets/img/hur-senator.png      — kullanılmıyor (sembol/rozet vurgusu kaldırıldı; dosya arşiv olarak duruyor)
 assets/img/login-ekrani.png     — platform giriş ekranı (721x570, "1. adım" kartındaki çerçeveli görsel)
 scripts/serve.py                — önbelleksiz yerel önizleme sunucusu
@@ -131,14 +131,16 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
 
 ## Teknik notlar
 
-- **Dikey VSL (9:16, short-form):** Oynatıcı hero'da dikey çerçevede durur. Ölçüler `assets/css/main.css` içindeki `:root` değişkenleriyle ayarlanır:
-  `--vsl-w` (genişlik, varsayılan 320px), `--vsl-ratio` (9/16), `--vsl-crop` (kırpma oranı, varsayılan `316.05%`).
-  Mevcut 1920×1080 video, ortasındaki 9:16 bölgeyi göstermek için zoom + kırpma ile oynatılır
-  (kaynağın içerik alanı ortada 923×1080; kenarlarda pay var). **Gerçek dikey video gelince
-  `--vsl-crop:100%` yapın ve posteri tam kare (ör. 1080×1920) üretin.**
-- **Kontrol şeridi:** YouTube'un kendi kontrolü kırpıldığı için özel şerit kullanılır
-  (oynat/duraklat, sürüklenebilir ilerleme, süre). YouTube tarafı `controls=0` ile gömülür;
-  durum/süre, IFrame API üzerinden ~400 ms'de bir okunur (API scripti yalnızca tıklama sonrası yüklenir).
+- **Dikey VSL (9:16):** Tanıtım filmi `assets/video/vsl.mp4` (kendi dosyamız, gerçek 9:16).
+  Hero'daki dikey çerçevede gösterilir; ölçüler `assets/css/main.css` içindeki `:root`
+  değişkenleriyle ayarlanır: `--vsl-w` (genişlik, varsayılan 320px), `--vsl-ratio` (9/16),
+  `--vsl-crop` (gerçek dikey videoda `100%`; yatay 16:9 YouTube kaynağına dönersen `316.05%`).
+  Dosya "oynat"a basılana kadar indirilmez (`preload="none"`, `src` tıklamada atanır); oynatma
+  sırasındaki tampon için spinner çıkar, videoya tıklayınca duraklat/devam eder.
+- **Kontrol şeridi:** Özel şerit kullanılır (oynat/duraklat, sürüklenebilir ilerleme, süre);
+  `<video>` elementinin kendi kontrolleri gizlidir. `CONFIG.VSL_URL`'e bir YouTube linki
+  yazılırsa eski yol devrededir: IFrame API ve oynatıcı yalnızca tıklamada yüklenir
+  (`youtube-nocookie` host'u, `controls=0`), süre/konum ~400 ms'de bir API'den okunur.
 - **Sorun şeridi (ticker):** Düz durur (açı yok), ekranı kenardan kenara kaplar (`width:108vw`).
   İçerik, yarım tur şeridi her zaman dolduracak kadar çoğaltılır ve hız sabit tutulur (~70 px/sn);
   döngü kesintisizdir. `prefers-reduced-motion` açıkken animasyon durur.
@@ -149,8 +151,10 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
   (`transition-delay`) reveal bitince JS ile silinir; aksi halde hover ve filtre geçiş
   animasyonlarına da bulaşıp gecikmeli tepki veriyordu. Filtre değişiminde yalnızca yeni
   görünen kartlar `pop` animasyonu oynatır (ekranda duranlar yeniden oynamaz).
-- **Gizlilik:** Sayfa açılışında üçüncü taraf istek yok (doğrulandı). YouTube alan adları yalnızca
-  "oynat"a basıldıktan sonra devreye girer; `ref` parametresi linke eklenir, cookie/localStorage'a yazılmaz.
+- **Gizlilik:** Sayfa açılışında ve oynatma boyunca üçüncü taraf istek yok — tanıtım filmi de
+  kendi klasörümüzden servis edilir. `CONFIG.VSL_URL`'e YouTube linki yazılırsa YouTube alan adları
+  yalnızca "oynat"a basıldıktan sonra devreye girer. `ref` parametresi linke eklenir,
+  cookie/localStorage'a yazılmaz.
 
 ## Metinleri nerede değiştirirsin?
 
@@ -160,6 +164,11 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
   manifesto + `#son` (final). Türkçe yazımda `&rsquo;` (') ve `&mdash;` (—) kullanılır.
 - **Bağlantılar ve video:** `assets/js/main.js` → en üstteki `CONFIG`
   (`APPLY_URL`, `LOGIN_URL`, `STORE_URL`, `VSL_URL`, `REF_PARAM`).
+  `VSL_URL` yerel bir mp4 yolu (`assets/video/vsl.mp4`) ya da YouTube linki olabilir.
+- **Tanıtım filmini (VSL) değiştirmek:** yeni videoyu `assets/video/vsl.mp4` adıyla kaydet
+  (H.264/AAC, 9:16, ~30 MB altı, `-movflags +faststart`) → yeni videodan bir kare alıp
+  `assets/img/vsl-poster.jpg` posterini üret → `index.html` ve `CONFIG.VSL_URL`'deki `?v`
+  ekini bir artır (şu an `?v=6`).
 - **"Nasıl işliyor?" kartları:** 1. karttaki giriş ekranı görseli
   `assets/img/login-ekrani.png` (değiştirirsen aynı dosya adını kullan; görselin
   `<img ... width height>` değerlerini de yeni boyuta göre güncelle).
@@ -174,8 +183,8 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
   olur (altı çizilmez); **tek başınaysa** (footer menüsü) gizlenir. Gerçek değeri yazdığın anda
   hepsi normale döner.
 
-Önizleme: `index.html`'i çift tıklayıp tarayıcıda açabilirsin (yazılar/görseller çalışır;
-YouTube oynatıcı için `http://` gerekir → `python scripts/serve.py 8000` ile aç).
+Önizleme: `index.html`'i çift tıklayıp tarayıcıda açabilirsin (yazılar/görseller/video çalışır).
+Yalnızca YouTube linki seçeneğine dönersen `http://` gerekir → `python scripts/serve.py 8000`.
 
 ## Doldurulması gereken placeholder'lar (uydurulmadı)
 
@@ -185,7 +194,7 @@ YouTube oynatıcı için `http://` gerekir → `python scripts/serve.py 8000` il
 | `{{PLATFORM_LOGIN_URL}}` | `CONFIG.LOGIN_URL` | ✅ Dolduruldu: `https://hursenato.com/` (giriş ayrı adresteyse değiştir) |
 | ref parametre adı | `CONFIG.REF_PARAM` (`ref`) | Platform farklı ad kullanıyorsa değiştir |
 | `{{STORE_URL}}` | `CONFIG.STORE_URL` + footer "Mağaza" linki | Hars Gazetesi/Dergi mağazası. **Boşken footer'daki bu link otomatik gizlenir** (kırık link çıkmaz) |
-| `{{VSL_VIDEO_URL}}` | — (dolduruldu) | `CONFIG.VSL_URL` artık YouTube linki. YouTube veya mp4 desteklenir; YouTube IFrame API'si ve oynatıcı yalnızca "oynat"a basılınca yüklenir (`youtube-nocookie` host'u), sayfa açılışında üçüncü taraf isteği olmaz |
+| `{{VSL_VIDEO_URL}}` | `assets/js/main.js` → `CONFIG.VSL_URL` | ✅ Dolduruldu: `assets/video/vsl.mp4` (yerel dosya, kendi sunucumuzdan). YouTube linki de desteklenir; o durumda IFrame API ve oynatıcı yalnızca "oynat"a basılınca yüklenir (`youtube-nocookie`), sayfa açılışında üçüncü taraf isteği olmaz |
 | `{{INFO_SOURCE_LINKS}}` | `index.html` çözümler bölümü | Uğur Güzel hesap linkleri |
 | `{{KVKK_URL}}` | SSS + footer | Aydınlatma metni |
 | `{{CONTACT}}` | footer | İletişim |
@@ -212,8 +221,8 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
       görünmezlik hataları düzeltildi — sarı/siyah zemin uyumu)
 - [x] Koyu tema: otomatik (`prefers-color-scheme`) dark tema kaldırıldı — marka sarısı her
       sistemde aynı görünür; `color-scheme: light` ile form/scrollbar da açık temada
-- [x] VSL dikey (9:16) çerçevede; poster görünür; YouTube'a yalnızca tıklamada bağlanılır
-      (nocookie host); özel kontrol şeridi çalışır (oynat/duraklat, sarma, süre)
+- [x] VSL dikey (9:16) çerçevede; poster görünür; video kendi sunucumuzdan (`assets/video/vsl.mp4`),
+      tıklamadan indirilmez; özel kontrol şeridi çalışır (oynat/duraklat, sarma, süre); tamponda spinner
 - [x] Şerit düz + kenardan kenara + kesintisiz döngü; hızlı kaydırmada boş bölüm kalmaz
 - [x] Çözüm kartlarında kategori etiketi satır içinde alta hizalı (`margin-top:auto`)
 - [x] "Nasıl işliyor?" üç kartı aynı yükseklikte: 1. kart gerçek giriş ekranı görseli
