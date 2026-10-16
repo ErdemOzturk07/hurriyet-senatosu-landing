@@ -5,6 +5,7 @@ const CONFIG = {
   STORE_URL: "{{STORE_URL}}",
   VSL_URL: "assets/video/vsl.mp4?v=7", // yerel mp4 (dosya yolu) veya YouTube linki
   REF_PARAM: "ref", // platform farklı parametre adı kullanıyorsa burayı değiştir
+  POPUP_DELAY_MS: 12000, // davet pop-up'ı gecikmesi (ms). Demo için URL'ye ?popup=8 yaz: 8 sn.
 };
 
 function isPlaceholder(v) {
@@ -358,6 +359,52 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  /* ---------- Davet pop-up'ı: VSL'e dokunmayan ziyaretçiye ~12 sn sonra bir kez ---------- */
+  (function davetPopup() {
+    const dlg = document.getElementById("davet");
+    if (!dlg || typeof dlg.showModal !== "function") return;
+    const kapatBtn = document.getElementById("davetKapat");
+    // Gösterildi mi? Yalnızca sekme oturumunda hatırlanır (çerez/localStorage kullanılmaz).
+    const goruldu = () => { try { return sessionStorage.getItem("hs_davet") === "1"; } catch { return false; } };
+    const isaretle = () => { try { sessionStorage.setItem("hs_davet", "1"); } catch {} };
+    if (goruldu()) return;
+    // Demo kolaylığı: ?popup=8 → 8 saniye sonra göster (1-120 sn)
+    const demoSn = (() => {
+      try {
+        const n = parseInt(new URLSearchParams(window.location.search).get("popup") || "", 10);
+        return n >= 1 && n <= 120 ? n * 1000 : 0;
+      } catch { return 0; }
+    })();
+    // VSL'e dokunulduysa (oynat düğmesi, video oynatma veya duraklat düğmesi) davet gösterilmez.
+    let vslDokunuldu = false;
+    const dokun = () => { vslDokunuldu = true; };
+    if (video) video.addEventListener("play", dokun);
+    if (play) play.addEventListener("click", dokun);
+    if (tgl) tgl.addEventListener("click", dokun);
+
+    const kapat = () => { if (dlg.open) dlg.close(); };
+    const ac = () => {
+      if (goruldu() || vslDokunuldu) return;
+      if (video && !video.paused && !video.ended) return; // video oynuyorsa dokunma
+      isaretle();
+      dlg.showModal();
+      document.body.classList.add("popup-acik");
+    };
+    if (kapatBtn) kapatBtn.addEventListener("click", kapat);
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) kapat(); }); // arka plana tıklayınca kapan
+    dlg.addEventListener("close", () => document.body.classList.remove("popup-acik"));
+    dlg.querySelectorAll("[data-apply-link]").forEach((a) => a.addEventListener("click", isaretle));
+
+    setTimeout(() => {
+      if (document.visibilityState === "hidden") {
+        document.addEventListener("visibilitychange", function gor() {
+          document.removeEventListener("visibilitychange", gor);
+          ac();
+        });
+      } else { ac(); }
+    }, demoSn || CONFIG.POPUP_DELAY_MS || 12000);
+  })();
 
   /* ---------- Sorun şeridi: kesintisiz (sonsuz) döngü ---------- */
   const track = document.getElementById("tickerTrack");

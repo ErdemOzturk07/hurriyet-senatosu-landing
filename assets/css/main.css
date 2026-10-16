@@ -352,6 +352,22 @@ details p{margin:.65rem 0 0;color:var(--ink-soft)}
 .to-top:hover{transform:translateY(-3px)}
 @media(min-width:880px){.to-top{bottom:1.5rem}}
 
+/* ---------- Davet pop-up'ı (VSL'e dokunmayan ziyaretçiye ~12 sn sonra bir kez) ---------- */
+.popup{width:min(94vw,520px);max-height:92vh;max-height:92dvh;padding:0;border:2px solid var(--ink);border-radius:var(--radius);background:var(--paper);box-shadow:8px 9px 0 rgba(17,17,17,.75);overflow:hidden}
+.popup[open]{display:flex;flex-direction:column;animation:popGir .28s ease}
+.popup::backdrop{background:rgba(17,17,17,.62)}
+.popup-govde{overflow:auto;-webkit-overflow-scrolling:touch;background:var(--paper);scrollbar-width:thin}
+.popup-govde::-webkit-scrollbar{width:8px}
+.popup-govde::-webkit-scrollbar-thumb{background:rgba(17,17,17,.35);border-radius:8px}
+.popup-govde::-webkit-scrollbar-track{background:transparent}
+.popup-govde img{display:block;width:100%;height:auto}
+.popup-x{position:absolute;top:.5rem;right:.5rem;width:2.35rem;height:2.35rem;border-radius:50%;background:var(--ink);color:var(--paper);border:2px solid var(--paper);display:grid;place-items:center;cursor:pointer;transition:transform .2s ease}
+.popup-x:hover{transform:scale(1.08)}
+.popup-alt{padding:.8rem;background:#fff;border-top:2px solid var(--ink)}
+.popup-alt .btn{display:block;width:100%;text-align:center}
+body.popup-acik{overflow:hidden}
+@keyframes popGir{from{opacity:0;transform:translateY(14px) scale(.97)}}
+
 /* ---------- Animasyonlar ---------- */
 [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 [data-reveal].in{opacity:1;transform:none}

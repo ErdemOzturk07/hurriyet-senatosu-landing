@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/montserrat-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css?v=5">
-<link rel="stylesheet" href="assets/css/main.css?v=7">
+<link rel="stylesheet" href="assets/css/main.css?v=8">
 <!-- {{ANALYTICS}} : gizlilik odaklı analitik gerekiyorsa bu satırın altına ekle. Varsayılan: üçüncü taraf script yok. -->
 </head>
 <body>
@@ -432,6 +432,18 @@
 <a class="sticky-cta" data-apply-link href="https://hursenato.com/">Senatör Ol &rarr;</a>
 <button class="to-top" id="toTop" aria-label="Başa dön">↑</button>
 
-<script src="assets/js/main.js?v=7" defer></script>
+<!-- Davet pop-up'ı: VSL'e dokunmayan ziyaretçiye ~12 sn sonra bir kez gösterilir -->
+<dialog class="popup" id="davet" aria-labelledby="davetBaslik">
+  <h2 class="visually-hidden" id="davetBaslik">Hürriyet Senatosu'na davet</h2>
+  <button class="popup-x" id="davetKapat" type="button" aria-label="Daveti kapat"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="popup-govde">
+    <img src="assets/img/pop_up.jpg" alt="Hürriyet Senatosu daveti: ad, soyad ve telefon numarasıyla kısa sürede üye ol; kendin dahil en fazla 16 imzacıyı sisteme ekle." width="1024" height="1536" loading="lazy" decoding="async">
+  </div>
+  <div class="popup-alt">
+    <a class="btn btn-primary" data-apply-link href="https://hursenato.com/">Üye Ol</a>
+  </div>
+</dialog>
+
+<script src="assets/js/main.js?v=8" defer></script>
 </body>
 </html>

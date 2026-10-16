@@ -27,8 +27,10 @@ python scripts/serve.py 8000        # --open eklersen tarayıcıyı da açar
 `scripts/serve.py` her yanıta `Cache-Control: no-store` ekler: VS Code'da CSS/JS'i
 kaydedip tarayıcıda **F5** yaptığında değişiklik anında görünür. Klasik
 `python -m http.server 8000` kullanırsan tarayıcı eski CSS'i önbellekten servis edebilir;
-o durumda **Ctrl+F5** (sert yenileme) yap. CSS/JS bağlantılarındaki `?v=7` eki de
-bir kerelik önbellek kırıcıdır — büyük bir değişiklikte bir artır (`?v=8`).
+o durumda **Ctrl+F5** (sert yenileme) yap. CSS/JS bağlantılarındaki `?v=8` eki de
+bir kerelik önbellek kırıcıdır — değişen dosyanın sürümünü bir artır (`?v=9`);
+video/poster gibi ağır dosyalar değişmediyse onların `?v`'sine dokunma (boşuna
+yeniden indirilmesin).
 
 ## Yapı
 
@@ -36,10 +38,11 @@ bir kerelik önbellek kırıcıdır — büyük bir değişiklikte bir artır (`
 index.html                      — tek sayfa (semantik, lang="tr")
 assets/css/fonts.css            — self-hosted font tanımları (build çıktısı)
 assets/css/main.css             — tema + bileşenler (tek tema: marka sarısı)
-assets/js/main.js               — ref aktarımı, VSL, sayaç, filtre, reveal, scrollspy
+assets/js/main.js               — ref aktarımı, VSL, davet pop-up'ı, sayaç, filtre, reveal, scrollspy
 assets/video/vsl.mp4            — VSL tanıtım filmi (9:16, 720×1280, H.264/AAC, 39,6 MB, faststart)
 assets/fonts/*.woff2            — Montserrat + Inter (latin + latin-ext)
 assets/img/vsl-poster.jpg       — VSL videosunun 20. sn'sinden alınan 9:16 poster (720×1280)
+assets/img/pop_up.jpg           — davet pop-up'ı posteri (1024×1536, ~173 KB; yazılar görselin içinde)
 assets/img/hur-senator.png      — kullanılmıyor (sembol/rozet vurgusu kaldırıldı; dosya arşiv olarak duruyor)
 assets/img/login-ekrani.png     — platform giriş ekranı (721x570, "1. adım" kartındaki çerçeveli görsel)
 scripts/serve.py                — önbelleksiz yerel önizleme sunucusu (+ HTTP Range: video sarma)
@@ -157,6 +160,15 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
   (`transition-delay`) reveal bitince JS ile silinir; aksi halde hover ve filtre geçiş
   animasyonlarına da bulaşıp gecikmeli tepki veriyordu. Filtre değişiminde yalnızca yeni
   görünen kartlar `pop` animasyonu oynatır (ekranda duranlar yeniden oynamaz).
+- **Davet pop-up'ı:** `index.html`'deki `<dialog id="davet">`, VSL'e hiç dokunmayan ziyaretçiye
+  12 saniye sonra **bir kez** gösterilir (oynat/duraklat düğmesi veya video oynatma = dokunuldu
+  sayılır, pop-up gösterilmez). Süre `assets/js/main.js` → `CONFIG.POPUP_DELAY_MS`; sunum/demo
+  için URL'ye `?popup=8` yazarsan 8 saniye olur (1-120 sn). Görsel: `assets/img/pop_up.jpg`
+  (metinler posterin içindedir; poster değişirse aynı boyut oranını koru). Kapatma: üstteki ✕,
+  `Esc` veya arka plana tıklama; kapanınca sayfa kaldığı yerden devam eder. Bir sekme
+  oturumunda bir kez gösterilir (`sessionStorage: hs_davet`; çerez/localStorage kullanılmaz).
+  Her yenilemede çıkmasını istersen `main.js`'teki `goruldu()`/`isaretle()` denetimini kaldır.
+  "Üye Ol" düğmesi `data-apply-link` sayesinde `?ref=` parametresini taşır.
 - **Gizlilik:** Sayfa açılışında ve oynatma boyunca üçüncü taraf istek yok — tanıtım filmi de
   kendi klasörümüzden servis edilir. `CONFIG.VSL_URL`'e YouTube linki yazılırsa YouTube alan adları
   yalnızca "oynat"a basıldıktan sonra devreye girer. `ref` parametresi linke eklenir,
@@ -239,6 +251,9 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 - [x] Footer'daki doldurulmamış `{{...}}` linkleri gizli, cümle içindekiler link olmaktan
       çıkıp metin olarak kalıyor (kırık link yok); `?ref=` altı başvuru linkinin tümüne
       taşınıyor (6/6), cookie/localStorage temiz; sayfa açılışında üçüncü taraf istek 0
+- [x] Davet pop-up'ı: VSL'e dokunmayan ziyaretçiye ~12 sn sonra bir kez; ✕ / `Esc` / arka planla
+      kapanır, aynı oturumda tekrar çıkmaz; VSL oynarken veya oynatıldıysa gösterilmez;
+      "Üye Ol" `?ref=` taşır; poster kendi sunucumuzdan (`assets/img/pop_up.jpg`)
 
 ## Sayfa akışı (bölüm sırası)
 
