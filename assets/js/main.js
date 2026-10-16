@@ -66,27 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ---------- Paylaşım linkleri ----------
-     Metin HTML'de düz Türkçe yazılır (data-share-text); yüzde kodlamayı burada
-     üretiriz. JS kapalıysa HTML'deki hazır (kodlanmış) linkler çalışır. */
-  (function shareLinks() {
-    const row = document.querySelector(".share-row");
-    if (!row || !row.dataset.shareText) return;
-    const pageUrl = row.dataset.shareBase || window.location.href;
-    const text = row.dataset.shareText;
-    const e = encodeURIComponent;
-    const links = {
-      whatsapp: "https://wa.me/?text=" + e(text + " " + pageUrl),
-      x: "https://twitter.com/intent/tweet?url=" + e(pageUrl) + "&text=" + e(text),
-      telegram: "https://t.me/share/url?url=" + e(pageUrl) + "&text=" + e(text),
-      eposta: "mailto:?subject=" + e("Hürriyet Senatosu") + "&body=" + e(text + "\n" + pageUrl),
-    };
-    row.querySelectorAll("a[data-share]").forEach((a) => {
-      const href = links[a.dataset.share];
-      if (href) a.href = href;
-    });
-  })();
-
   /* ---------- Hamburger menü ---------- */
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("mainNav");

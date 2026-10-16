@@ -193,10 +193,9 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
 - **"Nasıl işliyor?" kartları:** 1. karttaki giriş ekranı görseli
   `assets/img/login-ekrani.png` (değiştirirsen aynı dosya adını kullan; görselin
   `<img ... width height>` değerlerini de yeni boyuta göre güncelle).
-  3. karttaki paylaşım düğmelerinin **mesaj metni** `index.html` içinde
-  `data-share-text="..."` ile **düz Türkçe** yazılır — yüzde kodlamayı JS üretir;
-  paylaşılacak adres `data-share-base="..."`. (JS kapalıysa HTML'deki hazır
-  `href`'ler kullanılır; o metni de değiştirdiysen [urlencoder.org](https://www.urlencoder.org/)'dan kopyalayabilirsin.)
+  3. karttaki paylaşım kutucukları (WhatsApp, X, Telegram, E-posta) yalnızca
+  görseldir: link değildir, tıklanınca bir yere gitmez. Etiketleri
+  `index.html` içindeki `.share-tile` öğelerinden düzenleyebilirsin.
 - **Renkler, boşluklar, oynatıcı ölçüsü:** `assets/css/main.css` → en üstteki `:root`
   değişkenleri (`--paper`, `--ink`, `--vsl-w`, `--vsl-crop` …).
 - **Yeni metin eklerken:** `{{...}}` biçimindeki placeholder'ları doldurmayı unutma (aşağıdaki tablo).
@@ -247,10 +246,10 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 - [x] Şerit düz + kenardan kenara + kesintisiz döngü; hızlı kaydırmada boş bölüm kalmaz
 - [x] Çözüm kartlarında kategori etiketi satır içinde alta hizalı (`margin-top:auto`)
 - [x] "Nasıl işliyor?" üç kartı aynı yükseklikte: 1. kart gerçek giriş ekranı görseli
-      (mini tarayıcı çerçevesi), 3. kart paylaş düğmeleri + örnek davet + referans çipi +
+      (mini tarayıcı çerçevesi), 3. kart paylaşım kutucukları + örnek davet + referans çipi +
       hedef göstergesi; kartların altındaki boşluk kalmadı (552 px — 2 px tolerans)
-- [x] Paylaş düğmeleri (WhatsApp/X/Telegram/E-posta) yeni sekmede açılır; mesaj metni
-      HTML'de düz Türkçe durur, kodlamayı JS üretir; script yoksa hazır linkler çalışır
+- [x] Paylaşım kutucukları (WhatsApp/X/Telegram/E-posta) yalnızca görseldir: link/buton
+      değildir, tıklanınca bir yere gitmez
 - [x] Footer'daki doldurulmamış `{{...}}` linkleri gizli, cümle içindekiler link olmaktan
       çıkıp metin olarak kalıyor (kırık link yok); `?ref=` altı başvuru linkinin tümüne
       taşınıyor (6/6), cookie/localStorage temiz; sayfa açılışında üçüncü taraf istek 0

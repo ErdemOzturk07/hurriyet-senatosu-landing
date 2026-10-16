@@ -251,11 +251,13 @@ section[id]{scroll-margin-top:92px}
 .shot-bar em{margin-left:auto;font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.02em;color:var(--paper);opacity:.75}
 .step-shot img{display:block;width:100%;height:auto}
 
-/* 3. adım: paylaşım bloğu (düğmeler + referans çipi + hedef göstergesi) */
+/* 3. adım: paylaşım bloğu (kutucuklar + referans çipi + hedef göstergesi) */
 .share-block{margin:auto 0 0}
 .share-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}
-.share-row a{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.6rem .15rem;border:2px solid var(--ink);border-radius:.6rem;background:#fff;color:var(--ink);text-decoration:none;font-size:.63rem;font-weight:800;line-height:1.1;box-shadow:2px 2px 0 rgba(17,17,17,.8);transition:background .2s ease,color .2s ease,transform .2s ease}
-.share-row a:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+/* Kutucuklar yalnızca görseldir: link/buton değildir, tıklanınca bir yere gitmez.
+   Hover'daki renk/yükselme animasyonu süs olarak korunur. */
+.share-tile{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.6rem .15rem;border:2px solid var(--ink);border-radius:.6rem;background:#fff;color:var(--ink);font-size:.63rem;font-weight:800;line-height:1.1;box-shadow:2px 2px 0 rgba(17,17,17,.8);cursor:default;transition:background .2s ease,color .2s ease,transform .2s ease}
+.share-tile:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
 .share-row svg{width:1.15rem;height:1.15rem}
 .share-tip{margin:.9rem 0 0;font-size:.73rem;color:var(--ink-soft);font-weight:600}
 .ref-chip{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;margin:.85rem 0 0;padding:.5rem .6rem;border:2px dashed rgba(17,17,17,.45);border-radius:.6rem;background:#fff;font-size:.75rem;font-weight:800}
