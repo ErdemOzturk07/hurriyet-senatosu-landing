@@ -203,15 +203,18 @@ section[id]{scroll-margin-top:92px}
 @media(hover:none){.ms-shot img{filter:none}}
 @media(prefers-reduced-motion:reduce){.ms-shot img{transition:none}}
 
-/* Gettysburg fotoğrafı: paragrafın yanında çerçeveli küçük görsel */
-.gettysburg{margin-top:1.5rem}
-.gettysburg p{margin:0}
-.gb-shot{margin:0;max-width:340px;border:2px solid var(--paper);border-radius:var(--radius);overflow:hidden;box-shadow:4px 4px 0 rgba(255,216,0,.4)}
-.gb-shot img{display:block;width:100%;height:auto;filter:grayscale(1);transition:filter .5s ease}
-.gb-shot:hover img{filter:grayscale(0)}
-@media(hover:none){.gb-shot img{filter:none}}
-@media(prefers-reduced-motion:reduce){.gb-shot img{transition:none}}
-@media(min-width:760px){.gettysburg{display:grid;grid-template-columns:260px 1fr;gap:1.2rem;align-items:center}.gb-shot{max-width:none}}
+/* Gettysburg: tam genişlikte kapanış kartı (panoramik görsel) */
+.milestones li.wide{grid-column:1/-1}
+.ms-shot-wide img{aspect-ratio:2/1}
+.milestones li.wide p{max-width:70ch}
+@media(min-width:700px){.ms-shot-wide img{aspect-ratio:3/1}}
+
+/* Türkiye kartları: kart üstüne bitişik görsel; s/b durur, hover'da renk */
+.fg-shot{margin:-1rem -1.1rem .7rem;border-bottom:2px solid var(--paper)}
+.fg-shot img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 42%;filter:grayscale(1);transition:filter .5s ease}
+.feature-grid li:hover .fg-shot img{filter:grayscale(0)}
+@media(hover:none){.fg-shot img{filter:none}}
+@media(prefers-reduced-motion:reduce){.fg-shot img{transition:none}}
 
 /* Para sistemi bölümü: gündem başlıkları (yalnızca görsel etiketler) */
 .agenda-chips{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0 0;padding:0}

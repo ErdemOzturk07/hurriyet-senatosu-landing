@@ -20,9 +20,11 @@ Kurallar:
 | Hürriyetin Çocukları (Sons of Liberty) | [Sons of Liberty Broadside, 1765](https://commons.wikimedia.org/wiki/File:Sons_of_Liberty_Broadside,_1765.jpg) — alt: [Bostonians Paying the Excise-Man, 1774](https://commons.wikimedia.org/wiki/File:Philip_Dawe_(attributed),_The_Bostonians_Paying_the_Excise-man,_or_Tarring_and_Feathering_(1774).jpg) veya [Revere: A View of the Year 1765](https://commons.wikimedia.org/wiki/File:A_View_of_the_Year_1765.jpg) |
 | Boston Çay Partisi | [Currier: Destruction of Tea at Boston Harbor (1846)](https://commons.wikimedia.org/wiki/File:Destruction_of_tea_at_Boston_Harbor_LCCN91795889.jpg) |
 | Bağımsızlık Bildirgesi | [Trumbull: Declaration of Independence (1819)](https://commons.wikimedia.org/wiki/File:Declaration_of_Independence_(1819),_by_John_Trumbull.jpg) |
-| Gettysburg paragrafı (metin altı) | [Lincoln's Gettysburg Address, Gettysburg (1863)](https://commons.wikimedia.org/wiki/File:Lincoln%27s_Gettysburg_Address,_Gettysburg.jpg) — Bachrach |
+| Gettysburg (geniş kapanış kartı) | [Lincoln's Gettysburg Address, Gettysburg (1863)](https://commons.wikimedia.org/wiki/File:Lincoln%27s_Gettysburg_Address,_Gettysburg.jpg) — Bachrach |
 
-## B) "Aynı çizgi Türkiye'de" — 2 kart
+## B) "Aynı çizgi Türkiye'de" — 3 kart
+
+> **Durum: uygulandı ✓** (main.css v19) — II. Meşrutiyet / Cumhuriyet / Özal dönemi ayrı kartlar; görseller kullanıcı tarafından sağlandı (basın arşivleri — telif durumu Commons gibi net değil; istenirse kamu malı eşdeğerlerle değiştirilebilir).
 
 | Kart | Görsel | Lisans |
 |---|---|---|
