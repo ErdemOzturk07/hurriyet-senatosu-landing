@@ -1,0 +1,23 @@
+name: PR Bildirimi
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ntfy push bildirimi gonder
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          curl -fsS \
+            -H "Title: Yeni PR #${PR_NUMBER} - ${PR_TITLE}" \
+            -H "Tags: tada" \
+            -H "Click: ${PR_URL}" \
+            -d "Acan: ${PR_AUTHOR} | ${PR_URL}" \
+            "https://ntfy.sh/erdem-senato-pr-9d2f4c"

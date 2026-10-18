@@ -25,3 +25,9 @@ Bu dosya, bu repoda çalışan AI agent'lar için proje kurallarıdır.
   4. Görsel doğrulama: `playwright-cli` ile sayfayı aç ve değişen bölümü test et.
   5. Karar önerisi: merge / değişiklik iste / reddet — gerekçesiyle.
 - Merge yalnızca kullanıcının onayıyla yapılır: `gh pr merge <no> --squash --delete-branch`
+
+## Bildirim altyapısı
+
+- PR açıldığında (opened / reopened / ready_for_review) `.github/workflows/pr-notify.yml` GitHub Actions üzerinden ntfy.sh konusuna anlık push bildirimi gönderir.
+- ntfy konusu: `erdem-senato-pr-9d2f4c` → https://ntfy.sh/erdem-senato-pr-9d2f4c
+- Workflow dosyası ekleyip push ederken gh token'ında `workflow` izni gerekir: `gh auth refresh -s workflow`
