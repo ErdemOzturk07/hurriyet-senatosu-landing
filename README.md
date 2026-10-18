@@ -3,7 +3,7 @@
 Tek sayfalık, bağımlılıksız statik landing. Tema: sarı-siyah-beyaz, dolmakalem (logo) motifi.
 Hero: solda hook, sağda VSL. Mobil öncelikli, erişilebilir, üçüncü taraf script yok.
 
-🔗 Canlı (test yayını): https://hursenato.vercel.app
+🔗 Canlı (test yayını): https://hursenato-test.vercel.app
 
 ## Çalıştırma
 
@@ -38,7 +38,7 @@ yeniden indirilmesin).
 index.html                      — tek sayfa (semantik, lang="tr")
 assets/css/fonts.css            — self-hosted font tanımları (build çıktısı)
 assets/css/main.css             — tema + bileşenler (tek tema: marka sarısı)
-assets/js/main.js               — ref aktarımı, VSL, davet pop-up'ı, sayaç, filtre, reveal, scrollspy
+assets/js/main.js               — ref aktarımı, VSL, davet pop-up'ı, sayaç, döngü, filtre, reveal, scrollspy
 assets/video/vsl.mp4            — VSL tanıtım filmi (9:16, 720×1280, H.264/AAC, 39,6 MB, faststart)
 assets/fonts/*.woff2            — Montserrat + Inter (latin + latin-ext)
 assets/img/vsl-poster.jpg       — VSL videosunun 20. sn'sinden alınan 9:16 poster (720×1280)
@@ -52,11 +52,11 @@ scripts/setup-assets.ps1        — asset üretimi (font indirme, poster kare al
 
 ## Yayınlama (hosting)
 
-**Canlı (test yayını):** **https://hursenato.vercel.app**
+**Canlı (test yayını):** **https://hursenato-test.vercel.app**
 **Repo:** github.com/ErdemOzturk07/hurriyet-senatosu-landing (public)
 **Yedek yayın (GitHub Pages):** https://erdemozturk07.github.io/hurriyet-senatosu-landing/
 
-Birincil yayın **Vercel**'de (ücretsiz Hobby planı; proje adı `hursenato`). Yayına giren
+Birincil yayın **Vercel**'de (ücretsiz Hobby planı; proje adı `hursenato-test`). Yayına giren
 içerik `vercel.json`'daki build komutuyla seçilir: yalnızca `index.html` + `assets/`
 kopyalanır — `scripts/`, `baslat.bat`, `README.md`, `.env` yayına **gitmez** (404).
 
@@ -176,7 +176,9 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
   12 saniye sonra **bir kez** gösterilir (oynat/duraklat düğmesi veya video oynatma = dokunuldu
   sayılır, pop-up gösterilmez). Süre `assets/js/main.js` → `CONFIG.POPUP_DELAY_MS`; sunum/demo
   için URL'ye `?popup=8` yazarsan 8 saniye olur (1-120 sn). Görsel: `assets/img/pop_up.jpg`
-  (metinler posterin içindedir; poster değişirse aynı boyut oranını koru). Kapatma: üstteki ✕,
+  (metinler posterin içindedir; poster değişirse aynı 2:3 boyut oranını koru — pop-up'ın genişliği
+  bu orana göre ekran yüksekliğinden hesaplanır, posterin tamamı kaydırmadan ekrana sığar; görsel
+  sayfa açılışında indirilir, pop-up anında dolu açılır). Kapatma: üstteki ✕,
   `Esc` veya arka plana tıklama; kapanınca sayfa kaldığı yerden devam eder. Bir sekme
   oturumunda bir kez gösterilir (`sessionStorage: hs_davet`; çerez/localStorage kullanılmaz).
   Her yenilemede çıkmasını istersen `main.js`'teki `goruldu()`/`isaretle()` denetimini kaldır.
@@ -191,7 +193,7 @@ sayfa "ideolojiden bağımsız katılım" çizgisini korur.
 - **Tüm sayfa metinleri:** `index.html` — bölümler `id` ile ayrılmıştır:
   `#ust` (hero) · `#sorun` (şerit) · `#parasistemi` (teşhis) · `#nasil` · `#cozumler` (kartlar) ·
   `#nedir` · `#hurriyetler` · `#kokenler` · `#slogan` (orta söz bandı) · `#model` ·
-  `#taban` (örnekler + örgütlenme) · `#anlatim` (içerik türleri) · `#netlik` (sözlük) ·
+  `#taban` (örnekler) · `#orgutlenme` (süreç döngüsü) · `#anlatim` (içerik türleri) · `#netlik` (sözlük) ·
   `#guven` · `#sss` · manifesto + `#son` (final). Türkçe yazımda `&rsquo;` (') ve `&mdash;` (—) kullanılır.
 - **Bağlantılar ve video:** `assets/js/main.js` → en üstteki `CONFIG`
   (`APPLY_URL`, `LOGIN_URL`, `STORE_URL`, `VSL_URL`, `REF_PARAM`).
@@ -255,8 +257,8 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
       tıklamadan indirilmez; özel kontrol şeridi çalışır (oynat/duraklat, sarma, süre); tamponda spinner
 - [x] Şerit düz + kenardan kenara + kesintisiz döngü; hızlı kaydırmada boş bölüm kalmaz
 - [x] Çözüm kartlarında kategori etiketi satır içinde alta hizalı (`margin-top:auto`)
-- [x] Podcast içeriği işlendi: `#parasistemi` (teşhis + gündem başlıkları), `#taban` (örnekler +
-      5 adımlı örgütlenme modeli), `#anlatim` (animasyon/video/kitap); çözümlere "Para Arzı:
+- [x] Podcast içeriği işlendi: `#parasistemi` (teşhis + gündem başlıkları), `#taban` (örnekler),
+      `#orgutlenme` (5 adımlı örgütlenme döngüsü), `#anlatim` (animasyon/video/kitap); çözümlere "Para Arzı:
       Tam Rezerv Bankacılığı" kartı, SSS'e parti bağımsızlığı / %90 ekonomi / "modeller kesin
       politika değil" soruları, sözlüğe kaydi para + tam rezerv + anayasal iktisat eklendi
 - [x] Yeni bölümlerde doğrulanmamış sayısal iddia yok; modeller "tartışmaya açık öneri" olarak
@@ -266,6 +268,11 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 - [x] Gettysburg kartı (`li.wide.spot`) yatay: görsel solda (%38), yıl+başlık+açıklama sağda;
       mobilde de yan yana kalır, görsel kart yüksekliğini doldurur (object-fit:cover);
       kart min-height 222px — görsel masaüstünde ~50px daha büyük görünür
+- [x] "Aynı çizgi Türkiye'de" kartlarına da hover animasyonu: yükselme (translateY -3px) +
+      büyüyen sarı gölge — bölümdeki diğer kartlarla aynı; görsel zaten hover'da renkleniyordu
+- [x] Alt manifesto (SSS altı, `.manifesto-final`) sarı zemine alındı; "Hürriyet Senatörüsün"
+      vurgusu siyah çip + sarı metne geçti (ters vurgu). Ortadaki `#slogan` bandı beyaz
+      kalır — sınıf ayrıldı
 - [x] "Nasıl işliyor?" üç kartı aynı yükseklikte: 1. kart gerçek giriş ekranı görseli
       (mini tarayıcı çerçevesi), 3. kart paylaşım kutucukları + örnek davet + referans çipi +
       hedef göstergesi; kartların altındaki boşluk kalmadı (552 px — 2 px tolerans)
@@ -273,10 +280,20 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
       değildir, tıklanınca bir yere gitmez
 - [x] Footer'daki doldurulmamış `{{...}}` linkleri gizli, cümle içindekiler link olmaktan
       çıkıp metin olarak kalıyor (kırık link yok); `?ref=` altı başvuru linkinin tümüne
-      taşınıyor (6/6), cookie/localStorage temiz; sayfa açılışında üçüncü taraf istek 0
+      taşınıyor (7/7), cookie/localStorage temiz; sayfa açılışında üçüncü taraf istek 0
 - [x] Davet pop-up'ı: VSL'e dokunmayan ziyaretçiye ~12 sn sonra bir kez; ✕ / `Esc` / arka planla
       kapanır, aynı oturumda tekrar çıkmaz; VSL oynarken veya oynatıldıysa gösterilmez;
       "Üye Ol" `?ref=` taşır; poster kendi sunucumuzdan (`assets/img/pop_up.jpg`)
+- [x] Örgütlenme modeli artık kendi beyaz bantlı bölümünde (`#orgutlenme`): solda başlık +
+      metin, sağda interaktif süreç döngüsü (≥960px iki kolon; başlık dairenin üst hizasında,
+      altında doğal akışla vurgu kartı + "Senatör Ol" düğmesi + etkileşim ipucu; metin üstte,
+      daire ortada) — 5 adım yörüngede, oklar saat yönünde,
+      ayrıntı merkezdeki sarı kartta;
+      tıklama/hover/odak ile adım seçilir; dokunulmadığında görünürken kendiliğinden
+      ilerler, imleç/odak bir adımın üzerindeyken duraklar ve ayrılınca kaldığı adımdan
+      devam eder (`prefers-reduced-motion`'da ilerlemez); adımlar mürekkep siyahı,
+      aktif adım + merkez kart marka sarısı (beyaz zemin için açık tema); mobilde (≤759px)
+      daire kaybolur, adımlar açıklamalarıyla beyaz kart listesine döner; JS'siz de 1. adım görünür
 
 ## Sayfa akışı (bölüm sırası)
 
@@ -290,10 +307,11 @@ Vektör logo dosyası gelirse bu sembol birebir değiştirilebilir.
 8. `#kokenler` — Kökenler · Hürriyet Ağacı (6 adım + Türkiye çizgisi) — siyah bant
 9. `#slogan` — slogan bandı (söz + kısa açıklama, manifesto stili) — beyaz bant
 10. `#model` — Model · Öncü grup (9 → 16 → 5.000 → 80.000)
-11. `#taban` — Taban hareketleri + örgütlenme modeli — siyah bant
-12. `#anlatim` — Farkındalık · Anlatım (animasyon/video/kitap) — sarı bant
-13. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
-14. `#guven` — Görünür olmak zorunda değilsin
-15. `#sss` — SSS — beyaz bant
-16. `manifesto` + `#son` final CTA — siyah
-17. Kaldırıldı: `#katki` (bütçe katkısı bölümü)
+11. `#taban` — Taban hareketleri — siyah bant
+12. `#orgutlenme` — Örgütlenme modelimiz (solda başlık+metin, sağda süreç döngüsü) — beyaz bant
+13. `#anlatim` — Farkındalık · Anlatım (animasyon/video/kitap) — sarı bant
+14. `#netlik` — Kavram netliği + küçük sözlük — beyaz bant
+15. `#guven` — Görünür olmak zorunda değilsin
+16. `#sss` — SSS — beyaz bant
+17. `manifesto` + `#son` final CTA — siyah
+18. Kaldırıldı: `#katki` (bütçe katkısı bölümü)

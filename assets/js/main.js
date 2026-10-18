@@ -455,6 +455,91 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })();
 
+  /* ---------- Örgütlenme döngüsü: yörüngedeki adımlar + merkez kart ---------- */
+  (function orgCycle() {
+    const root = document.getElementById("orgCycle");
+    if (!root) return;
+    const nodes = Array.from(root.querySelectorAll(".cycle-node"));
+    const hub = root.querySelector(".cycle-hub");
+    const hubNo = root.querySelector(".cycle-hub-no");
+    const hubName = root.querySelector(".cycle-hub-name");
+    const hubDesc = root.querySelector(".cycle-hub-desc");
+    const arcs = Array.from(root.querySelectorAll(".cycle-arc"));
+    if (!nodes.length || !hub) return;
+    let active = 0, inView = false;
+
+    // Mobilde döngü açıklamalı listeye döner: düğmeler işlevsiz kalır (açıklama zaten görünür).
+    const mqMobile = window.matchMedia("(max-width: 759px)");
+    const syncMobile = () => nodes.forEach((n) => { n.disabled = mqMobile.matches; });
+    syncMobile();
+    if (mqMobile.addEventListener) mqMobile.addEventListener("change", () => { syncMobile(); schedule(); });
+
+    const show = (i) => {
+      const ni = ((i % nodes.length) + nodes.length) % nodes.length;
+      const changed = ni !== active;
+      active = ni;
+      nodes.forEach((n, k) => {
+        n.classList.toggle("is-active", k === active);
+        n.setAttribute("aria-pressed", k === active ? "true" : "false");
+      });
+      arcs.forEach((a, k) => a.classList.toggle("is-on", k === active));
+      const noEl = nodes[active].querySelector(".cycle-no");
+      const nameEl = nodes[active].querySelector(".cycle-name");
+      const descEl = document.getElementById(nodes[active].getAttribute("aria-describedby"));
+      if (hubNo && noEl) hubNo.textContent = noEl.textContent;
+      if (hubName && nameEl) hubName.textContent = nameEl.textContent;
+      if (hubDesc && descEl) hubDesc.textContent = descEl.textContent;
+      if (changed) {
+        hub.classList.remove("swap");
+        void hub.offsetWidth; // animasyon her geçişte yeniden başlasın
+        hub.classList.add("swap");
+      }
+    };
+
+    // Oto ilerleme: görünürken sıradaki adıma kendiliğinden geçer. İmleç/odak bir
+    // adımın üzerindeyken duraklar; ayrılınca kaldığı adımdan devam eder.
+    const STEP_MS = 1900;
+    let timer = 0, paused = false;
+    const canRun = () => !reduced && !paused && inView && !document.hidden && !mqMobile.matches;
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (!canRun()) return;
+      timer = window.setTimeout(() => {
+        if (!canRun()) return;
+        show(active + 1);
+        schedule();
+      }, STEP_MS);
+    };
+    const pause = () => { paused = true; window.clearTimeout(timer); };
+    const resume = () => { paused = false; schedule(); };
+
+    nodes.forEach((n, i) => {
+      const enter = () => { if (n.disabled) return; pause(); show(i); };
+      const leave = () => { if (n.disabled) return; resume(); };
+      n.addEventListener("pointerenter", enter);
+      n.addEventListener("pointerleave", leave);
+      n.addEventListener("focus", enter);
+      n.addEventListener("blur", leave);
+      n.addEventListener("click", () => { if (!n.disabled) show(i); });
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          inView = e.isIntersecting;
+          if (inView) schedule(); else window.clearTimeout(timer);
+        }),
+        { threshold: 0.5 }
+      ).observe(root.querySelector(".cycle-stage") || root);
+    } else {
+      inView = true;
+    }
+    document.addEventListener("visibilitychange", schedule);
+
+    show(0);
+    schedule();
+  })();
+
   /* ---------- Çözüm filtresi ---------- */
   (function filters() {
     const chips = Array.from(document.querySelectorAll(".chip[data-filter]"));
@@ -496,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".hero-grid > div, .hero-card, .section h2, .section-sub, .lede, .lede-light, " +
     ".hero-pledge, .steps li, .cards article, .feature-grid li, .trust-list li, .timeline div, " +
     ".hero-media, .hero-welcome, .vsl-frame, .manifesto p, #sss details, .final-cta .cta-row, " +
-    ".filters, .agenda-chips, .sig-grid, .card-tag, .milestones li, .neq-grid li, " +
+    ".filters, .agenda-chips, .sig-grid, .card-tag, .milestones li, .cycle, .neq-grid li, " +
     ".chain li, .glossary div, .sub-h, .manifesto-note"
   );
   if ("IntersectionObserver" in window && !reduced) {

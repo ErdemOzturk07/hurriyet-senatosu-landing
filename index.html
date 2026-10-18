@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/montserrat-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css?v=5">
-<link rel="stylesheet" href="assets/css/main.css?v=21">
+<link rel="stylesheet" href="assets/css/main.css?v=31">
 <!-- {{ANALYTICS}} : gizlilik odaklı analitik gerekiyorsa bu satırın altına ekle. Varsayılan: üçüncü taraf script yok. -->
 </head>
 <body>
@@ -158,7 +158,7 @@
       <p class="lede-light">Enflasyon ve geçim sıkıntısı, yalnızca yanlış siyasi tercihlerden gelmiyor; paranın nasıl yaratıldığı ve dağıtıldığı da masada. Senato&rsquo;nun gündeminin merkezinde ekonomi var: çalışmalarımızın yüzde 90&rsquo;ından fazlası ekonomiyle ilgili olacak.</p>
       <ul class="feature-grid">
         <li><strong>Parayı bankalar yaratır</strong><span>Ticari bankalar kredi kullandırırken kaydi para oluşturur; para arzı ve kredi hacmi büyür. Enflasyonun önemli kaynaklarından biri bu mekanizmadır.</span></li>
-        <li><strong>Tek başına faiz yetmez</strong><span>Para arzı ve kredi yaratımı sürerken yalnızca politika faizini yükseltmek enflasyonu düşürmez; para, kredi ve teşvikler birlikte ele alınmalıdır.</span></li>
+        <li><strong>Faiz ile çözülmez</strong><span>Para arzı ve kredi yaratımı sürerken yalnızca politika faizini yükseltmek enflasyonu düşürmez; para, kredi ve teşvikler birlikte ele alınmalıdır.</span></li>
         <li><strong>Faturayı kim ödüyor?</strong><span>Enflasyonun bedelini ücretlere, emekli aylıklarına ve döviz kuruna yıkmak yerine sistemin kendi kuralları tartışılmalıdır.</span></li>
         <li><strong>Masada alternatifler var</strong><span>Chicago Planı&rsquo;ndan bugüne tartışılan tam rezerv bankacılığını ve para arzını kurallara bağlayan anayasal iktisat yaklaşımlarını gündeme taşıyoruz.</span></li>
       </ul>
@@ -298,7 +298,7 @@
         <li><figure class="ms-shot"><img src="assets/img/tarih/sons-of-liberty-broadside-1765.jpg" alt="Hürriyetin Çocukları&rsquo;nın (Sons of Liberty) 1765 tarihli el ilanı" width="1100" height="732" loading="lazy" decoding="async"></figure><span class="ms-year">1765 sonrası</span><h3>Hürriyetin Çocukları (Sons of Liberty)</h3><p>Bu öncü grubun içinden daha geniş hareketler doğdu; etkileri çok daha büyük gelişmelere uzandı.</p></li>
         <li><figure class="ms-shot"><img src="assets/img/tarih/boston-tea-party-1846.jpg" alt="Currier litografisi: Boston Çay Partisi&rsquo;nde çay sandıklarının limanda denize atılışı, 1773" width="1100" height="840" loading="lazy" decoding="async"></figure><span class="ms-year">1773</span><h3>Boston Çay Partisi</h3><p>Yanan ateş sonraki kuşağı da etkiledi: ilk hareketin mensuplarından etkilenen, onlarla sohbet eden isimler bu süreçte yer aldı. Samuel Adams ve John Adams sonradan kurucu figürler arasına girdi.</p></li>
         <li><figure class="ms-shot"><img src="assets/img/tarih/bagimsizlik-bildirgesi-trumbull-1819.jpg" alt="John Trumbull&rsquo;un tablosu: Bağımsızlık Bildirgesi&rsquo;nin Kongre&rsquo;ye sunuluşu, 1776" width="1100" height="722" loading="lazy" decoding="async"></figure><span class="ms-year">1776</span><h3>Bağımsızlık Bildirgesi ve kurucu metinler</h3><p>Bildirge&rsquo;yi Anayasa ve anayasa değişiklikleri izledi; Jefferson ile John Adams gibi kurucu isimlerin fikirleriyle şekillenen gelenek doğdu. Etkisi Amerika&rsquo;da kalmadı: bütün dünyadaki hürriyetçi düşünceye geçti.</p></li>
-        <li class="wide spot"><figure class="ms-shot"><img src="assets/img/tarih/gettysburg-1863.jpg" alt="Abraham Lincoln, Gettysburg&rsquo;daki askerî mezarlık açılış töreninde kalabalığın arasında, 19 Kasım 1863 (fotoğraf: David Bachrach)" width="2200" height="734" loading="lazy" decoding="async"></figure><div class="ms-body"><span class="ms-year">1863</span><h3>Gettysburg Konuşması</h3><p>İç savaşta hayatını kaybedenlerin fedakarlığının boşa gitmediğini vurgulamak; Amerikan demokrasisini ve "halkın, halk tarafından, halk için yönetimi" ilkesini savunmaktır</p></div></li>
+        <li class="wide spot"><figure class="ms-shot"><img src="assets/img/tarih/gettysburg-1863.jpg" alt="Abraham Lincoln, Gettysburg&rsquo;daki askerî mezarlık açılış töreninde kalabalığın arasında, 19 Kasım 1863 (fotoğraf: David Bachrach)" width="2200" height="734" loading="lazy" decoding="async"></figure><div class="ms-body"><span class="ms-year">1863</span><h3>Gettysburg Konuşması</h3><p>İç savaşta hayatını kaybedenlerin fedakarlığının boşa gitmediğini vurgulamak; Amerikan demokrasisini ve "halkın, halk tarafından, halk için yönetimi" ilkesini savunmak için yapılmış, hürriyetçilik tarihinin en büyük olaylarından biriydi.</p></div></li>
       </ol>
       <h3 class="sub-h">Aynı çizgi Türkiye&rsquo;de</h3>
       <ul class="feature-grid grid-3">
@@ -352,16 +352,91 @@
         <li><strong>Sarı Yelekliler (Fransa)</strong><span>Sokaktan yükselen tepki, kamuoyu baskısına dönüştü.</span></li>
         <li><strong>Occupy Wall Street (ABD)</strong><span>Bankacılık ve eşitsizlik tartışmasını dünya çapında büyüttü.</span></li>
       </ul>
-      <h3 class="sub-h">Örgütlenme modelimiz</h3>
-      <p class="section-sub">İşe yarayan yol belli: küçük gruplar, ortak talep, karar alıcılar üzerinde baskı.</p>
-      <ol class="milestones no-count">
-        <li><span class="ms-year">1</span><h3>Somut sorun</h3><p>Toplumda karşılığı olan, belirli bir talep etrafında küçük gruplar birleşir.</p></li>
-        <li><span class="ms-year">2</span><h3>Gruplar büyür</h3><p>Sosyal medya ve mesajlaşma grupları üzerinden katılımcı sayısı artar.</p></li>
-        <li><span class="ms-year">3</span><h3>Ortak talep</h3><p>Sorun geniş kesimlere ulaşır ve ortak bir talebe dönüşür.</p></li>
-        <li><span class="ms-year">4</span><h3>Karar alıcılara baskı</h3><p>Milletvekilleri ve siyasi aktörler, talebi dikkate almak zorunda kalır.</p></li>
-        <li><span class="ms-year">5</span><h3>Seçim dönemi</h3><p>Kamuoyu baskısı, politika değişikliği talebine dönüşür.</p></li>
-      </ol>
-      <p class="section-sub">Senato aynı modeli ekonomi için işletiyor: seninle başlayan 16 imzacı, ilk küçük grup.</p>
+    </div>
+  </section>
+
+  <!-- ÖRGÜTLENME: süreç döngüsü — solda başlık+metin, sağda daire (beyaz bant) -->
+  <section class="section section-alt" id="orgutlenme">
+    <div class="wrap">
+      <div class="cycle-split">
+        <div class="cycle-intro">
+          <div class="cycle-intro-top">
+            <p class="eyebrow">Yöntem · Örgütlenme</p>
+            <h2>Örgütlenme modelimiz</h2>
+            <p class="section-sub">İşe yarayan yol belli: küçük gruplar, ortak talep, karar alıcılar üzerinde baskı. Süreç düz bir çizgi değil; her seçimle yeniden başlayan bir döngü:</p>
+          </div>
+          <div class="cycle-intro-bottom">
+            <p class="cycle-note"><strong>Döngü her seçimde yeniden başlar.</strong> Senato aynı modeli ekonomi için işletiyor: seninle başlayan 16 imzacı, ilk küçük grup.</p>
+            <div class="cta-row"><a class="btn btn-primary btn-lg" data-apply-link href="https://hursenato.com/">Senatör Ol</a></div>
+            <p class="cycle-hint"><span aria-hidden="true">↻</span> Adımlara tıklayarak gezinebilirsin; merkezdeki kart seçtiğin adımı anlatır.</p>
+          </div>
+        </div>
+        <!-- Süreç döngüsü: adımlar yörüngede, ayrıntı merkezdeki kartta. JS çalışmazsa 1. adım görünür kalır.
+             Mobilde daire kaybolur, adımlar açıklamalarıyla düz listeye döner. -->
+        <div class="cycle" id="orgCycle">
+          <div class="cycle-stage">
+            <svg class="cycle-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+              <circle class="cycle-track" cx="50" cy="50" r="38"/>
+              <path class="cycle-arc" d="M57.9 12.83A38 38 0 0 1 82.91 31"/>
+              <path class="cycle-arc" d="M87.79 46.03A38 38 0 0 1 78.24 75.43"/>
+              <path class="cycle-arc" d="M65.46 84.71A38 38 0 0 1 34.54 84.71"/>
+              <path class="cycle-arc" d="M21.76 75.43A38 38 0 0 1 12.21 46.03"/>
+              <path class="cycle-arc" d="M17.09 31A38 38 0 0 1 42.1 12.83"/>
+              <g class="cycle-arrows">
+                <path transform="translate(72.34 19.26) rotate(36)" d="M-1.6 -1.9L1.6 0L-1.6 1.9"/>
+                <path transform="translate(86.14 61.74) rotate(108)" d="M-1.6 -1.9L1.6 0L-1.6 1.9"/>
+                <path transform="translate(50 88) rotate(180)" d="M-1.6 -1.9L1.6 0L-1.6 1.9"/>
+                <path transform="translate(13.86 61.74) rotate(252)" d="M-1.6 -1.9L1.6 0L-1.6 1.9"/>
+                <path transform="translate(27.66 19.26) rotate(324)" d="M-1.6 -1.9L1.6 0L-1.6 1.9"/>
+              </g>
+            </svg>
+            <ol class="cycle-steps">
+              <li class="cycle-step">
+                <button type="button" class="cycle-node" aria-describedby="cy-d1">
+                  <span class="cycle-no">01</span>
+                  <span class="cycle-name">Somut sorun</span>
+                </button>
+                <p class="cycle-desc" id="cy-d1">Toplumda karşılığı olan, belirli bir talep etrafında küçük gruplar birleşir.</p>
+              </li>
+              <li class="cycle-step">
+                <button type="button" class="cycle-node" aria-describedby="cy-d2">
+                  <span class="cycle-no">02</span>
+                  <span class="cycle-name">Gruplar büyür</span>
+                </button>
+                <p class="cycle-desc" id="cy-d2">Sosyal medya ve mesajlaşma grupları üzerinden katılımcı sayısı artar.</p>
+              </li>
+              <li class="cycle-step">
+                <button type="button" class="cycle-node" aria-describedby="cy-d3">
+                  <span class="cycle-no">03</span>
+                  <span class="cycle-name">Ortak talep</span>
+                </button>
+                <p class="cycle-desc" id="cy-d3">Sorun geniş kesimlere ulaşır ve ortak bir talebe dönüşür.</p>
+              </li>
+              <li class="cycle-step">
+                <button type="button" class="cycle-node" aria-describedby="cy-d4">
+                  <span class="cycle-no">04</span>
+                  <span class="cycle-name">Karar alıcılara baskı</span>
+                </button>
+                <p class="cycle-desc" id="cy-d4">Milletvekilleri ve siyasi aktörler, talebi dikkate almak zorunda kalır.</p>
+              </li>
+              <li class="cycle-step">
+                <button type="button" class="cycle-node" aria-describedby="cy-d5">
+                  <span class="cycle-no">05</span>
+                  <span class="cycle-name">Seçim dönemi</span>
+                </button>
+                <p class="cycle-desc" id="cy-d5">Kamuoyu baskısı, politika değişikliği talebine dönüşür.</p>
+              </li>
+            </ol>
+            <div class="cycle-hub" aria-hidden="true">
+              <div class="cycle-hub-in">
+                <span class="cycle-hub-no">01</span>
+                <span class="cycle-hub-name">Somut sorun</span>
+                <p class="cycle-hub-desc">Toplumda karşılığı olan, belirli bir talep etrafında küçük gruplar birleşir.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -481,7 +556,7 @@
   </section>
 
   <!-- MANİFESTO -->
-  <section class="manifesto">
+  <section class="manifesto manifesto-final">
     <div class="wrap narrow">
       <p>Minarşistsen ve Türkiye'nin bu çürütücü sorunlarını çözmek istiyorsan hangi dünya görüşünden, hangi sosyolojiden gelirsen gel, sen de artık bir <strong>Hürriyet Senatörüsün</strong>.</p>
       <p class="manifesto-note">Çizgimiz hürriyet çizgisidir, firavunlar değil, hak eden kazanacak!</p>
@@ -526,13 +601,13 @@
   <h2 class="visually-hidden" id="davetBaslik">Hürriyet Senatosu'na davet</h2>
   <button class="popup-x" id="davetKapat" type="button" aria-label="Daveti kapat"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="popup-govde">
-    <img src="assets/img/pop_up.jpg" alt="Hürriyet Senatosu daveti: ad, soyad ve telefon numarasıyla kısa sürede üye ol; kendin dahil en fazla 16 imzacıyı sisteme ekle." width="1024" height="1536" loading="lazy" decoding="async">
+    <img src="assets/img/pop_up.jpg" alt="Hürriyet Senatosu daveti: ad, soyad ve telefon numarasıyla kısa sürede üye ol; kendin dahil en fazla 16 imzacıyı sisteme ekle." width="1024" height="1536" decoding="async">
   </div>
   <div class="popup-alt">
     <a class="btn btn-primary" data-apply-link href="https://hursenato.com/">Üye Ol</a>
   </div>
 </dialog>
 
-<script src="assets/js/main.js?v=10" defer></script>
+<script src="assets/js/main.js?v=13" defer></script>
 </body>
 </html>

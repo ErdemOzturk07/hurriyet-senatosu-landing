@@ -2,6 +2,7 @@
 *.zip
 deploy-hazir.zip
 dist/
+.playwright-cli/
 Thumbs.db
 Desktop.ini
 
